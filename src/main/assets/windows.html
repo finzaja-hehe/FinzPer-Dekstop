@@ -30,8 +30,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 #q::placeholder,#aq::placeholder{color:var(--mu)}
 #mn,#rc{min-width:0;min-height:0;display:flex;flex-direction:column}
 .sh{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:600;padding:0 4px 4px;flex:none}
-#ma,#pd{background:var(--c1);border:1px solid var(--ln);border-radius:4px;padding:0 8px;min-height:26px;font-size:11px}
-#ma:active,#pd:active{background:var(--c2)}
+#ma,#pd,#ca{background:var(--c1);border:1px solid var(--ln);border-radius:4px;padding:0 8px;min-height:26px;font-size:11px}
+#ma:active,#pd:active,#ca:active{background:var(--c2)}
 #sg{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:2px;align-content:start}
 .ap{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;border-radius:4px;font-size:10px;min-height:62px;padding:4px 2px;text-align:center;word-break:break-word}
 .ap:active,.rc:active{background:var(--c2)}
@@ -44,15 +44,19 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sf span:nth-child(2){flex:1}
 .av{width:22px;height:22px;border-radius:50%;background:#0078d4;display:flex;align-items:center;justify-content:center;font-size:11px}
 #tb{position:absolute;left:0;right:0;bottom:0;height:40px;background:rgba(32,32,32,.84);-webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);border-top:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between;padding:0 6px}
-#tc{display:flex;gap:2px}
-.tn{width:36px;height:36px;border-radius:5px;background:none;border:0;display:flex;align-items:center;justify-content:center;position:relative}
+#tc{display:flex;gap:2px;min-width:0;overflow-x:auto;scrollbar-width:none}
+#tc::-webkit-scrollbar{display:none}
+.tn{width:36px;height:36px;border-radius:5px;background:none;border:0;display:flex;align-items:center;justify-content:center;position:relative;flex:none}
 .tn .i{width:20px;height:20px}
 .tn .ib{width:22px;height:22px;border-radius:5px;font-size:12px}
 .tn:active{background:var(--c2);transform:scale(.93)}
 .tn.on{background:var(--c1)}
 .tn.on::after{content:"";position:absolute;bottom:2px;width:12px;height:2px;border-radius:2px;background:var(--a)}
-#sp{min-width:90px}
-#ty{min-width:90px;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.tn.run::after{content:"";position:absolute;bottom:2px;width:6px;height:2px;border-radius:2px;background:var(--mu)}
+.tn.act{background:var(--c1)}
+.tn.act::after{content:"";position:absolute;bottom:2px;width:12px;height:2px;border-radius:2px;background:var(--a)}
+#sp{min-width:90px;flex:none}
+#ty{min-width:90px;flex:none;display:flex;align-items:center;justify-content:flex-end;gap:8px}
 #ty .i{width:14px;height:14px;stroke-width:1.8}
 #cl{text-align:right;font-size:10px;line-height:1.3}
 #pm{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);width:min(60vw,240px);background:var(--sf);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid var(--ln);border-radius:8px;padding:6px;box-sizing:border-box;display:none;flex-direction:column;gap:2px;z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.45)}
@@ -61,10 +65,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pb{min-height:36px;border-radius:4px;border:0;background:none;font-size:12px;text-align:left;padding:0 8px}
 .pb:active{background:var(--c2)}
 .ib.pl{border:2px dashed rgba(255,255,255,.6);border-radius:7px;box-sizing:border-box;font-size:20px;font-weight:300;color:#fff}
-#ps{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);width:min(80vw,560px);max-height:calc(100% - 56px);box-sizing:border-box;display:none;flex-direction:column;gap:8px;padding:12px 14px 10px;border-radius:8px;overflow:hidden;z-index:4;background:var(--sf);border:1px solid var(--ln);-webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);box-shadow:0 8px 32px rgba(0,0,0,.45)}
-#ps.on{display:flex}
-#ps .sh{padding-bottom:0}
+#ps,#tv{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);width:min(80vw,560px);max-height:calc(100% - 56px);box-sizing:border-box;display:none;flex-direction:column;gap:8px;padding:12px 14px 10px;border-radius:8px;overflow:hidden;z-index:4;background:var(--sf);border:1px solid var(--ln);-webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);box-shadow:0 8px 32px rgba(0,0,0,.45)}
+#ps.on,#tv.on{display:flex}
+#ps .sh,#tv .sh{padding-bottom:0}
 #pg{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:2px;align-content:start}
+#tg{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px;align-content:start}
+.tw{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 6px 8px;border-radius:6px;background:var(--c1);border:1px solid var(--ln);font-size:11px;text-align:center;min-width:0}
+.tw:active{background:var(--c2)}
+.tw.act{border-color:var(--a)}
+.tw span:last-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cx{position:absolute;top:2px;right:2px;width:24px;height:24px;border-radius:4px;border:0;background:none;font-size:16px;line-height:1;color:var(--mu)}
+.cx:active{background:#c42b1c;color:#fff}
 .ap{position:relative}
 .ap.sel{background:rgba(96,205,255,.16);box-shadow:inset 0 0 0 1px var(--a)}
 .ap.sel::after{content:"\2713";position:absolute;top:3px;right:6px;width:16px;height:16px;border-radius:50%;background:var(--a);color:#000;font-size:11px;font-weight:700;line-height:16px;text-align:center}
@@ -84,7 +95,11 @@ button{font:inherit;color:inherit;cursor:pointer}
 <div class="sh"><span>Ketuk aplikasi untuk menambah / menghapus dari desktop</span><button id="pd">Selesai</button></div>
 <div id="pg"></div>
 </section>
-<section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pk" data-a="desk"></button><button class="pb" id="pa" data-a="pin"></button><button class="pb" data-a="no">Batal</button></section>
+<section id="tv" aria-label="Tampilan tugas">
+<div class="sh"><span>Aplikasi terbuka</span><button id="ca">Tutup semua</button></div>
+<div id="tg"></div>
+</section>
+<section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pk" data-a="desk"></button><button class="pb" id="pa" data-a="pin"></button><button class="pb" id="pc" data-a="close">Tutup jendela</button><button class="pb" data-a="no">Batal</button></section>
 <nav id="tb"><div id="sp"></div><div id="tc"></div><div id="ty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/></svg><div id="cl"></div></div></nav>
 </div>
 <script>
@@ -92,6 +107,7 @@ var K=['#0078d4','#e74856','#10893e','#f7630c','#8764b8','#00b7c3','#c239b3','#c
 var R=null,allV=false,$=function(s){return document.querySelector(s)};
 function logo(){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="fill:#4cc2ff;stroke:none"><rect x="3" y="3" width="8.5" height="8.5" rx="1"/><rect x="12.5" y="3" width="8.5" height="8.5" rx="1"/><rect x="3" y="12.5" width="8.5" height="8.5" rx="1"/><rect x="12.5" y="12.5" width="8.5" height="8.5" rx="1"/></svg>'}
 function find(){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>'}
+function taskv(){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="14" height="11" rx="2"/><path d="M7 19h12a2 2 0 0 0 2-2V9"/></svg>'}
 function gear(){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>'}
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';'})}
 function load(){
@@ -110,6 +126,15 @@ function tile(a){
 function rd(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}}
 function wr(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var pins=rd('pins'),rec=rd('rec');
+/* Multi-tab: opn = daftar package aplikasi yang "terbuka", act = aplikasi yang sedang aktif */
+var opn=rd('opn'),act=null;
+if(!Array.isArray(opn))opn=[];
+function isOpen(p){return opn.indexOf(p)>-1}
+function closeWin(p){
+ opn=opn.filter(function(x){return x!==p});wr('opn',opn);
+ if(act===p)act=null;
+ draw();tvDraw();
+}
 /* Desktop: kosong kecuali layanan Google (bawaan). Aplikasi lain ditambah manual lewat tombol "+ Tambah".
    'desk' di localStorage = daftar package pilihan pengguna. Selama belum pernah diubah (null), dipakai daftar bawaan Google di bawah. */
 var GOOGLE=['com.android.vending','com.android.chrome','com.google.android.gm','com.google.android.apps.maps','com.google.android.youtube','com.google.android.apps.youtube.music','com.google.android.apps.photos','com.google.android.apps.docs','com.google.android.apps.docs.editors.docs','com.google.android.apps.docs.editors.sheets','com.google.android.apps.docs.editors.slides','com.google.android.googlequicksearchbox','com.google.android.apps.googleassistant','com.google.android.calendar','com.google.android.apps.tachyon','com.google.android.apps.meetings','com.google.android.videos','com.google.android.apps.nbu.files','com.google.android.apps.bard','com.google.android.apps.translate','com.google.android.keep','com.google.android.apps.messaging','com.google.android.apps.chromecast.app','com.google.android.apps.walletnfcrel','com.google.android.apps.podcasts','com.google.android.apps.fitness','com.google.android.apps.subscriptions.red','com.google.android.apps.safetyhub','com.google.android.apps.authenticator2','com.google.android.apps.searchlite'];
@@ -135,12 +160,25 @@ function pick(){
  var t=$('#aq').value.toLowerCase(),on=deskList().map(function(a){return a.p});
  $('#pg').innerHTML=load().filter(function(a){return a.n.toLowerCase().indexOf(t)>-1}).map(function(a){var s=on.indexOf(a.p)>-1;return '<button class="ap'+(s?' sel':'')+'" data-t="'+esc(a.p)+'" aria-pressed="'+s+'">'+tile(a)+esc(a.n)+'</button>'}).join('');
 }
-function openPick(){$('#st').className='';$('#pm').className='';R=null;$('#aq').value='';$('#ps').className='on';pick();draw()}
+function openPick(){$('#st').className='';$('#pm').className='';closeTv();R=null;$('#aq').value='';$('#ps').className='on';pick();draw()}
 function closePick(){$('#ps').className=''}
+function closeTv(){$('#tv').className=''}
+function tvDraw(){
+ var l=opn.map(byP).filter(Boolean);
+ $('#tg').innerHTML=l.length?l.map(function(a){return '<div class="tw'+(act===a.p?' act':'')+'" '+data(a)+'><button class="cx" data-x="'+esc(a.p)+'" aria-label="Tutup '+esc(a.n)+'">\u00d7</button>'+tile(a)+'<span>'+esc(a.n)+'</span></div>'}).join(''):'<p class="nb">Belum ada aplikasi yang terbuka. Buka aplikasi dari desktop atau menu Mulai.</p>';
+}
+function toggleTv(){
+ var on=$('#tv').className.indexOf('on')>-1;
+ closePick();$('#st').className='';$('#pm').className='';
+ if(on)closeTv();else{tvDraw();$('#tv').className='on'}
+ draw();
+}
 function draw(){
  $('#dk').innerHTML=deskList().map(function(a){return '<button class="di" '+data(a)+'>'+tile(a)+'<span>'+esc(a.n)+'</span></button>'}).join('')+'<button class="di" data-ad="1" aria-label="Tambah aplikasi ke desktop"><span class="ib lt pl">+</span><span>Tambah</span></button>';
  var tbar=pinned().slice(0,6);
- $('#tc').innerHTML='<button class="tn'+($('#st').className.indexOf('on')>-1?' on':'')+'" data-s="1" aria-label="Mulai">'+logo()+'</button><button class="tn" data-s="1" data-f="1" aria-label="Cari">'+find()+'</button>'+tbar.map(function(a){return '<button class="tn" '+data(a)+' aria-label="'+esc(a.n)+'">'+tile(a)+'</button>'}).join('');
+ var seen=tbar.map(function(a){return a.p});
+ opn.forEach(function(p){var a=byP(p);if(a&&seen.indexOf(p)<0){tbar.push(a);seen.push(p)}});
+ $('#tc').innerHTML='<button class="tn'+($('#st').className.indexOf('on')>-1?' on':'')+'" data-s="1" aria-label="Mulai">'+logo()+'</button><button class="tn" data-s="1" data-f="1" aria-label="Cari">'+find()+'</button><button class="tn'+($('#tv').className.indexOf('on')>-1?' on':'')+'" data-v="1" aria-label="Tampilan tugas">'+taskv()+'</button>'+tbar.map(function(a){var c='tn'+(isOpen(a.p)?(act===a.p?' act':' run'):'');return '<button class="'+c+'" '+data(a)+' aria-label="'+esc(a.n)+'">'+tile(a)+'</button>'}).join('');
 }
 function grid(){
  var t=$('#q').value.toLowerCase(),all=allV||t!=='',st=$('#st');
@@ -152,32 +190,40 @@ function grid(){
  var rl=rec.map(function(p){return byP(p)}).filter(Boolean);
  $('#rl').innerHTML=rl.length?rl.map(function(a){return '<button class="rc" '+data(a)+'>'+tile(a)+'<span>'+esc(a.n)+'<small>Baru dibuka</small></span></button>'}).join(''):'<p class="nb">Aplikasi yang baru kamu buka akan muncul di sini.</p>';
 }
-function sheet(p,n){var m=$('#pm');m.dataset.p=p;m.dataset.n=n;$('#pt').textContent=n;$('#pk').textContent=inDesk(p)?'Hapus dari desktop':'Tambahkan ke desktop';$('#pa').textContent=isPin(p)?'Lepas sematan':'Sematkan ke Mulai dan taskbar';m.className='on'}
+function sheet(p,n){var m=$('#pm');m.dataset.p=p;m.dataset.n=n;$('#pt').textContent=n;$('#pk').textContent=inDesk(p)?'Hapus dari desktop':'Tambahkan ke desktop';$('#pa').textContent=isPin(p)?'Lepas sematan':'Sematkan ke Mulai dan taskbar';$('#pc').style.display=isOpen(p)?'':'none';m.className='on'}
 function clock(){var d=new Date(),p=function(n){return ('0'+n).slice(-2)};$('#cl').innerHTML=p(d.getHours())+'.'+p(d.getMinutes())+'<br>'+p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()}
 function openApp(p){
  if(window.Android)Android.launch(p);
+ if(!isOpen(p)){opn.push(p);wr('opn',opn)}
+ act=p;
  rec=[p].concat(rec.filter(function(x){return x!==p})).slice(0,4);wr('rec',rec);
- $('#st').className='';closePick();$('#q').value='';allV=false;draw();
+ $('#st').className='';closePick();closeTv();$('#q').value='';allV=false;draw();
 }
 var lt=null,lp=false;
 document.addEventListener('pointerdown',function(e){lp=false;clearTimeout(lt);var b=e.target.closest('[data-p]');if(!b)return;lt=setTimeout(function(){lp=true;sheet(b.getAttribute('data-p'),b.getAttribute('data-n'))},500)});
 ['pointerup','pointercancel'].forEach(function(t){document.addEventListener(t,function(){clearTimeout(lt)})});
 document.addEventListener('contextmenu',function(e){e.preventDefault()});
 ['gesturestart','dblclick'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()})});
+document.addEventListener('visibilitychange',function(){if(!document.hidden){act=null;draw();if($('#tv').className)tvDraw()}});
 document.addEventListener('click',function(e){
  if(lp){lp=false;return}
+ var cx=e.target.closest('[data-x]');
+ if(cx){closeWin(cx.getAttribute('data-x'));return}
+ if(e.target.closest('#ca')){opn=[];act=null;wr('opn',opn);draw();tvDraw();return}
+ if(e.target.closest('[data-v]')){toggleTv();return}
  var tg=e.target.closest('[data-t]');
  if(tg){var tp=tg.getAttribute('data-t');toggleDesk(tp);var on=inDesk(tp);tg.classList.toggle('sel',on);tg.setAttribute('aria-pressed',on);draw();return}
  if(e.target.closest('[data-ad]')){openPick();return}
  if(e.target.closest('#pd')){closePick();return}
  var ac=e.target.closest('[data-a]');
- if(ac){var m=$('#pm'),p=m.dataset.p;if(ac.dataset.a==='pin'){if(isPin(p))pins=pins.filter(function(x){return x.p!==p});else pins.push({p:p,n:m.dataset.n});wr('pins',pins)}else if(ac.dataset.a==='desk'){toggleDesk(p)}m.className='';draw();grid();return}
+ if(ac){var m=$('#pm'),p=m.dataset.p;if(ac.dataset.a==='pin'){if(isPin(p))pins=pins.filter(function(x){return x.p!==p});else pins.push({p:p,n:m.dataset.n});wr('pins',pins)}else if(ac.dataset.a==='desk'){toggleDesk(p)}else if(ac.dataset.a==='close'){closeWin(p)}m.className='';draw();grid();if($('#tv').className)tvDraw();return}
  if(e.target.closest('#sx')){if(window.Android)Android.launch('com.android.settings');return}
  if(e.target.closest('[data-m]')){allV=!allV;if(!allV)$('#q').value='';grid();return}
  var pk=e.target.closest('[data-p]');if(pk){openApp(pk.getAttribute('data-p'));return}
  var s=e.target.closest('[data-s]');
- if(s){var st=$('#st'),open=st.className.indexOf('on')>-1;closePick();st.className=open?'':'on';if(!open){$('#q').value='';allV=false;R=null;draw();grid();if(s.dataset.f)$('#q').focus()}else draw();return}
+ if(s){var st=$('#st'),open=st.className.indexOf('on')>-1;closePick();closeTv();st.className=open?'':'on';if(!open){$('#q').value='';allV=false;R=null;draw();grid();if(s.dataset.f)$('#q').focus()}else draw();return}
  if(!e.target.closest('#ps')&&$('#ps').className){closePick();return}
+ if(!e.target.closest('#tv')&&$('#tv').className){closeTv();draw();return}
  if(!e.target.closest('#st')&&$('#st').className){$('#st').className='';draw()}
 });
 $('#q').addEventListener('input',grid);
@@ -186,4 +232,4 @@ $('#sx').innerHTML=gear();
 draw();grid();clock();setInterval(clock,15000);
 </script>
 </body>
-</html>
+ </html>
