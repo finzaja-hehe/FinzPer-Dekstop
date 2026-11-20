@@ -2,6 +2,7 @@ package com.finzz.hyperdesk;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -22,21 +23,27 @@ import java.util.HashMap;
 
 public class MainActivity extends Activity {
 
+    // Ganti kalau desain barumu bernama lain, misalnya "index3.html"
+    private static final String PAGE = "index.html";
+
     private WebView web;
     private final HashMap<String, String> ICONS = new HashMap<>();
 
     private static final String JS =
-        "window.icon=function(n){if(!window.Android)return '';"
+        "try{"
+        + "window.icon=function(n){if(!window.Android)return '';"
         + "if(!R){try{R=JSON.parse(Android.apps()).sort(function(a,b){return a.n.localeCompare(b.n)})}catch(e){R=[]}}"
         + "for(var k=0;k<R.length;k++)if(R[k].n===n&&R[k].i)return R[k].i;return ''};"
         + "var _t=window.tile;"
-        + "window.tile=function(n){var s=icon(n);if(!s)return _t(n);"
+        + "window.tile=function(n){var s=icon(n);if(!s)return _t?_t(n):'';"
         + "return '<span class=\"ib\"><img alt=\"\" src=\"data:image/png;base64,'+s+'\" style=\"width:100%;height:100%;border-radius:10px\"></span>'};"
-        + "draw();grid();";
+        + "draw();grid();"
+        + "}catch(e){}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         web = new WebView(this);
         web.setBackgroundColor(0xFF06142E);
         WebSettings s = web.getSettings();
@@ -50,7 +57,7 @@ public class MainActivity extends Activity {
             }
         });
         setContentView(web);
-        web.loadUrl("file:///android_asset/index.html");
+        web.loadUrl("file:///android_asset/" + PAGE);
     }
 
     @Override
@@ -111,4 +118,4 @@ public class MainActivity extends Activity {
             }
         }
     }
-            }
+}
