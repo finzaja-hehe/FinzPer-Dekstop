@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a1b3d">
+<title>HyperDesk</title>
+<style>
+:root{--bg:#06142e;--sf:rgba(44,44,44,.92);--tx:#fff;--mu:#c8c8c8;--ln:rgba(255,255,255,.09);--a:#60cdff;--c1:rgba(255,255,255,.06);--c2:rgba(255,255,255,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{height:100%;background:var(--bg);touch-action:manipulation}
+body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:"Segoe UI Variable","Segoe UI",Roboto,system-ui,sans-serif;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#app{position:relative;height:100%;overflow:hidden;background:radial-gradient(28% 40% at 50% 50%,#2f8cff 0%,transparent 70%),radial-gradient(22% 55% at 38% 45%,#1257d6 0%,transparent 70%),radial-gradient(26% 45% at 62% 55%,#59b4ff 0%,transparent 66%),radial-gradient(60% 40% at 50% 110%,#0d3a8a 0%,transparent 72%),var(--bg)}
+#dk{position:absolute;inset:0 0 48px 0;padding:8px 6px;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:2px}
+.di{width:80px;min-height:82px;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:1px solid transparent;border-radius:4px;font-size:12px;line-height:1.2;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.di:active{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25)}
+.di span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.ib{width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex:none}
+.ib .i{width:36px;height:36px}
+.ib.lt{border-radius:10px;font-size:20px;font-weight:600;color:#fff}
+.ib img{width:100%;height:100%;border-radius:10px}
+#win,#st{position:absolute;left:50%;transform:translateX(-50%);background:var(--sf);border:1px solid var(--ln);box-sizing:border-box;display:none;-webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);box-shadow:0 8px 32px rgba(0,0,0,.45)}
+#win{top:10px;width:min(80vw,560px);max-height:calc(100% - 66px);border-radius:8px;overflow:hidden;flex-direction:column;background:rgba(32,32,32,.96)}
+#win.on,#st.on{display:flex}
+#win.max{top:0;left:0;transform:none;width:100%;max-height:none;bottom:48px;border-radius:0}
+.tbar{height:40px;display:flex;align-items:center;justify-content:space-between;padding-left:12px;font-size:12px;flex:none;background:rgba(43,43,43,.98)}
+#wt{display:flex;align-items:center;gap:8px}
+#wt .i{width:16px;height:16px}
+.tbar>div:last-child{display:flex}
+.wb{width:46px;height:40px;border:0;background:none;display:flex;align-items:center;justify-content:center}
+.wb .i{width:12px;height:12px;stroke-width:1.4}
+.wb:active{background:rgba(255,255,255,.1)}
+.wb.x:active{background:#c42b1c}
+#wb{padding:12px;overflow:auto}
+.gr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fo{height:78px;border-radius:4px;background:var(--c1);border:1px solid var(--ln);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px}
+.fo .i{width:28px;height:28px}
+.row{width:100%;min-height:52px;display:flex;align-items:center;justify-content:space-between;background:var(--c1);border:1px solid var(--ln);border-radius:4px;padding:0 14px;margin-bottom:4px;font-size:14px}
+.row:active{background:var(--c2)}
+.sw{width:40px;height:20px;border-radius:10px;border:1px solid #cfcfcf;position:relative;flex:none;box-sizing:border-box}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:10px;height:10px;border-radius:50%;background:#cfcfcf;transition:left .12s}
+[aria-checked="true"] .sw{background:var(--a);border-color:var(--a)}
+[aria-checked="true"] .sw::after{left:24px;background:#000}
+.tx{font-size:13px;color:var(--mu);line-height:1.5;margin:4px 0 0}
+.ad{height:36px;border-radius:18px;background:var(--c2);display:flex;align-items:center;padding:0 16px;font-size:13px;color:var(--mu);margin-bottom:12px}
+#st{bottom:56px;width:min(78vw,600px);max-height:calc(100% - 68px);border-radius:8px;padding:16px 18px 0;flex-direction:column;gap:10px;overflow:hidden}
+#q{height:40px;border-radius:20px;border:1px solid var(--ln);border-bottom:1px solid rgba(255,255,255,.35);background:var(--c1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8c8c8' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-4-4'/%3E%3C/svg%3E") no-repeat 14px 50%/16px;color:var(--tx);padding:0 16px 0 40px;font:inherit;font-size:14px;width:100%;box-sizing:border-box;outline:0;flex:none;user-select:text;-webkit-user-select:text}
+#q:focus{border-bottom:2px solid var(--a)}
+#q::placeholder{color:var(--mu)}
+.sh{font-size:13px;font-weight:600;padding:0 4px;flex:none}
+#sg{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:2px;align-content:start;padding-bottom:6px}
+.ap{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;border-radius:4px;font-size:11px;min-height:78px;padding:6px 2px;text-align:center;word-break:break-word}
+.ap:active{background:var(--c2)}
+.sf{display:flex;align-items:center;gap:10px;margin:0 -18px;padding:10px 22px;background:rgba(0,0,0,.2);border-top:1px solid var(--ln);font-size:13px;flex:none}
+.av{width:28px;height:28px;border-radius:50%;background:#0078d4;display:flex;align-items:center;justify-content:center;font-size:13px}
+#tb{position:absolute;left:0;right:0;bottom:0;height:48px;background:rgba(32,32,32,.82);-webkit-backdrop-filter:blur(30px) saturate(1.4);backdrop-filter:blur(30px) saturate(1.4);border-top:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+#tc{display:flex;gap:4px}
+.tn{width:44px;height:44px;border-radius:6px;background:none;border:0;display:flex;align-items:center;justify-content:center;position:relative}
+.tn .i{width:24px;height:24px}
+.tn .ib{width:28px;height:28px;border-radius:7px;font-size:15px}
+.tn:active{background:var(--c2);transform:scale(.93)}
+.tn.on{background:var(--c1)}
+.tn.on::after{content:"";position:absolute;bottom:2px;width:16px;height:3px;border-radius:2px;background:var(--a)}
+#sp{min-width:150px}
+#ty{min-width:150px;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#ty .i{width:16px;height:16px;stroke-width:1.8}
+#cl{text-align:right;font-size:12px;line-height:1.3}
+#pm{position:absolute;left:50%;bottom:60px;transform:translateX(-50%);width:min(60vw,280px);background:var(--sf);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid var(--ln);border-radius:8px;padding:6px;box-sizing:border-box;display:none;flex-direction:column;gap:2px;z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.45)}
+#pm.on{display:flex}
+#pt{font-weight:600;font-size:13px;padding:8px 10px 6px;color:var(--mu)}
+.pb{min-height:44px;border-radius:4px;border:0;background:none;font-size:14px;text-align:left;padding:0 10px}
+.pb:active{background:var(--c2)}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="dk"></div>
+<section id="win" aria-label="Jendela aplikasi"><div class="tbar"><span id="wt"></span><div><button class="wb" id="wm" aria-label="Minimalkan"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"/></svg></button><button class="wb" id="wmx" aria-label="Maksimalkan"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/></svg></button><button class="wb x" id="wx" aria-label="Tutup"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4 4 20"/></svg></button></div></div><div id="wb"></div></section>
+<section id="st" aria-label="Menu Mulai"><input id="q" type="search" placeholder="Ketik di sini untuk mencari" aria-label="Cari aplikasi" autocomplete="off"><div class="sh">Semua aplikasi</div><div id="sg"></div><div class="sf"><span class="av">H</span>HyperDesk</div></section>
+<section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pa" data-a="pin"></button><button class="pb" data-a="no">Batal</button></section>
+<nav id="tb"><div id="sp"></div><div id="tc"></div><div id="ty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/></svg><div id="cl"></div></div></nav>
+</div>
+<script>
+var P={
+folder:'<path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+pad:'<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-3.9 3.2l-1 6A3 3 0 0 0 6 17l1.6-2h8.8L18 17a3 3 0 0 0 4.2-2.8l-1-6A4 4 0 0 0 17.3 5z"/>',
+cam:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m3 18 6-5 4 3 3-2 5 4"/>',
+msg:'<path d="M4 5h16v11H9l-5 4z"/>',
+tel:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+find:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'
+};
+var C={folder:'#ffb900',globe:'#4cc2ff',gear:'#d0d0d0',pad:'#3ddc57',cam:'#ff6b7a',img:'#a9a7ff',msg:'#2ed8e0',tel:'#ff9b4a',find:'#ffffff'};
+var K=['#0078d4','#e74856','#10893e','#f7630c','#8764b8','#00b7c3','#c239b3','#ca5010'];
+var A=[['file','File','folder'],['web','Peramban','globe'],['set','Pengaturan','gear'],['game','Game','pad'],['cam','Kamera','cam'],['gal','Galeri','img'],['msg','Pesan','msg'],['tel','Telepon','tel']];
+var cur=null,R=null,$=function(s){return document.querySelector(s)};
+function sv(k){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:'+C[k]+(k==='folder'?';fill:'+C[k]+'44':'')+'">'+P[k]+'</svg>'}
+function logo(){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="fill:#4cc2ff;stroke:none"><rect x="3" y="3" width="8.5" height="8.5" rx="1"/><rect x="12.5" y="3" width="8.5" height="8.5" rx="1"/><rect x="3" y="12.5" width="8.5" height="8.5" rx="1"/><rect x="12.5" y="12.5" width="8.5" height="8.5" rx="1"/></svg>'}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';'})}
+function load(){if(!R&&window.Android){try{R=JSON.parse(Android.apps()).sort(function(a,b){return a.n.localeCompare(b.n)})}catch(e){R=[]}}return R||[]}
+function ic(p){var l=load();for(var k=0;k<l.length;k++)if(l[k].p===p)return l[k].i||'';return ''}
+function tile(n,p){var s=p?ic(p):'';if(s)return '<span class="ib"><img alt="" src="data:image/png;base64,'+s+'"></span>';var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%K.length;return '<span class="ib lt" style="background:'+K[h]+'">'+esc(n.charAt(0).toUpperCase())+'</span>'}
+function body(id,n){
+ if(id==='file'){var f=['Unduhan','Dokumen','Gambar','Musik','Video','Game'];return '<div class="gr">'+f.map(function(x){return '<button class="fo">'+sv('folder')+x+'</button>'}).join('')+'</div>'}
+ if(id==='web')return '<div class="ad">Cari atau ketik alamat</div><p class="tx">Ini halaman contoh. Peramban sungguhan belum tersambung.</p>';
+ if(id==='set')return ['Wi-Fi','Bluetooth','Mode pesawat'].map(function(x,k){return '<button class="row" role="switch" aria-checked="'+(k<2)+'">'+x+'<span class="sw"></span></button>'}).join('');
+ if(id==='game')return '<div class="gr"><div class="fo">[NAMA GAME]</div><div class="fo">[NAMA GAME]</div><div class="fo">[NAMA GAME]</div></div>';
+ return '<p class="tx">'+n+' hanya contoh tampilan. Belum ada isinya.</p>';
+}
+function openApp(id){var a=A.filter(function(x){return x[0]===id})[0];cur=id;$('#wt').innerHTML=sv(a[2])+a[1];$('#wb').innerHTML=body(id,a[1]);$('#win').className='on';$('#st').className='';draw()}
+function closeWin(){cur=null;$('#win').className='';draw()}
+var pins=[];try{pins=JSON.parse(localStorage.getItem('pins')||'[]')}catch(e){}
+function save(){try{localStorage.setItem('pins',JSON.stringify(pins))}catch(e){}}
+function isPin(p){return pins.some(function(x){return x.p===p})}
+function pb(a){return '<button class="di" data-p="'+esc(a.p)+'" data-n="'+esc(a.n)+'">'+tile(a.n,a.p)+'<span>'+esc(a.n)+'</span></button>'}
+function tp(a){return '<button class="tn" data-p="'+esc(a.p)+'" data-n="'+esc(a.n)+'" aria-label="'+esc(a.n)+'">'+tile(a.n,a.p)+'</button>'}
+function draw(){
+ var an=window.Android;
+ $('#dk').innerHTML=an?(pins.length?pins.map(pb).join(''):'<p class="tx" style="width:240px;padding:8px">Tekan lama aplikasi di menu Mulai untuk menyematkannya di sini.</p>'):A.slice(0,4).map(function(a){return '<button class="di" data-o="'+a[0]+'"><span class="ib">'+sv(a[2])+'</span><span>'+a[1]+'</span></button>'}).join('');
+ $('#tc').innerHTML='<button class="tn'+($('#st').className?' on':'')+'" data-s="1" aria-label="Mulai">'+logo()+'</button><button class="tn" data-s="1" aria-label="Cari">'+sv('find')+'</button>'+(an?pins.slice(0,6).map(tp).join(''):A.slice(0,4).map(function(a){return '<button class="tn'+(cur===a[0]?' on':'')+'" data-o="'+a[0]+'" aria-label="'+a[1]+'">'+sv(a[2])+'</button>'}).join(''));
+}
+function sheet(p,n){var m=$('#pm');m.dataset.p=p;m.dataset.n=n;$('#pt').textContent=n;$('#pa').textContent=isPin(p)?'Lepas sematan':'Sematkan ke desktop';m.className='on'}
+function grid(){var t=$('#q').value.toLowerCase();
+ if(window.Android){$('#sg').innerHTML=load().filter(function(a){return a.n.toLowerCase().indexOf(t)>-1}).map(function(a){return '<button class="ap" data-p="'+esc(a.p)+'" data-n="'+esc(a.n)+'">'+tile(a.n,a.p)+esc(a.n)+'</button>'}).join('');return}
+$('#sg').innerHTML=A.filter(function(a){return a[1].toLowerCase().indexOf(t)>-1}).map(function(a){return '<button class="ap" data-o="'+a[0]+'"><span class="ib">'+sv(a[2])+'</span>'+a[1]+'</button>'}).join('')}
+function clock(){var d=new Date(),p=function(n){return ('0'+n).slice(-2)};$('#cl').innerHTML=p(d.getHours())+'.'+p(d.getMinutes())+'<br>'+p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()}
+var lt=null,lp=false;
+document.addEventListener('pointerdown',function(e){lp=false;clearTimeout(lt);var b=window.Android&&e.target.closest('[data-p]');if(!b)return;lt=setTimeout(function(){lp=true;sheet(b.getAttribute('data-p'),b.getAttribute('data-n'))},500)});
+['pointerup','pointercancel'].forEach(function(t){document.addEventListener(t,function(){clearTimeout(lt)})});
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+['gesturestart','dblclick'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()})});
+document.addEventListener('click',function(e){
+ if(lp){lp=false;return}
+ var ac=e.target.closest('[data-a]');
+ if(ac){var m=$('#pm'),p=m.dataset.p;if(ac.dataset.a==='pin'){if(isPin(p))pins=pins.filter(function(x){return x.p!==p});else pins.push({p:p,n:m.dataset.n});save()}m.className='';draw();return}
+ var o=e.target.closest('[data-o]'),s=e.target.closest('[data-s]'),w=e.target.closest('[role=switch]');
+ var pk=e.target.closest('[data-p]');if(pk){Android.launch(pk.getAttribute('data-p'));$('#st').className='';draw();return}
+ if(o){openApp(o.getAttribute('data-o'));return}
+ if(s){var st=$('#st');st.className=st.className?'':'on';if(st.className){$('#q').value='';R=null;grid()}draw();return}
+ if(w){w.setAttribute('aria-checked',w.getAttribute('aria-checked')!=='true');return}
+ if(e.target.closest('#wmx')){$('#win').classList.toggle('max');return}
+ if(e.target.closest('#wx,#wm')){closeWin();return}
+ if(!e.target.closest('#st')&&$('#st').className){$('#st').className='';draw()}
+});
+$('#q').addEventListener('input',grid);
+draw();grid();clock();setInterval(clock,15000);
+</script>
+</body>
+  </html>
