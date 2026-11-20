@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0b1c">
+<title>HyperDesk – UI HP gaya Desktop</title>
+<style>
+:root{--bg:#0d0b1c;--sf:rgba(24,21,48,.95);--tx:#f2f0ff;--mu:#d6d1f0;--ln:rgba(255,255,255,.14);--a:#7c2df0;--b:#22d3ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0b1c;--sf:rgba(24,21,48,.95);--tx:#f2f0ff;--mu:#d6d1f0;--ln:rgba(255,255,255,.14)}}
+:root[data-theme="dark"]{--bg:#0d0b1c;--sf:rgba(24,21,48,.95);--tx:#f2f0ff;--mu:#d6d1f0;--ln:rgba(255,255,255,.14)}
+html{height:100%;background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#app{position:relative;height:100%;overflow:hidden;background:radial-gradient(60% 50% at 20% 15%,var(--a) 0%,transparent 70%),radial-gradient(60% 50% at 85% 85%,var(--b) 0%,transparent 70%),var(--bg)}
+#dk{position:absolute;inset:0 0 56px 0;padding:14px 10px;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:8px}
+.di{width:76px;min-height:76px;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;font-size:12px}
+.ib{width:46px;height:46px;border-radius:13px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center}
+#win,#st{position:absolute;left:50%;transform:translateX(-50%);background:var(--sf);border:1px solid var(--ln);box-sizing:border-box;display:none}
+#win{top:14px;width:min(94vw,430px);max-height:calc(100% - 84px);border-radius:16px;overflow:hidden;flex-direction:column}
+#win.on,#st.on{display:flex}
+.tbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding-left:14px;font-size:13px;font-weight:600;flex:none}
+.wb{width:44px;height:44px;border:0;background:none;display:flex;align-items:center;justify-content:center}
+.wb .i{width:16px;height:16px}
+#wb{padding:4px 14px 16px;overflow:auto}
+.gr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fo{height:78px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;border:0}
+.fo .i{color:var(--b)}
+.row{width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.08);border:0;border-radius:12px;padding:0 14px;margin-bottom:8px;font-size:14px}
+.sw{width:42px;height:24px;border-radius:12px;background:#4b4670;position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .15s}
+[aria-checked="true"] .sw{background:var(--a)}
+[aria-checked="true"] .sw::after{left:21px}
+.tx{font-size:13px;color:var(--mu);line-height:1.5;margin:4px 0 0}
+.ad{height:44px;border-radius:22px;background:rgba(255,255,255,.1);display:flex;align-items:center;padding:0 16px;font-size:13px;color:var(--mu);margin-bottom:12px}
+#st{bottom:62px;width:min(94vw,380px);border-radius:20px;padding:16px;flex-direction:column;gap:12px}
+#q{height:44px;border-radius:22px;border:1px solid var(--ln);background:rgba(255,255,255,.1);color:var(--tx);padding:0 16px;font:inherit;font-size:14px;width:100%;box-sizing:border-box}
+#q::placeholder{color:var(--mu)}
+.sh{font-size:12px;font-weight:600;color:var(--mu)}
+#sg{max-height:46vh;overflow:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px 0}
+.ap{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;font-size:11px;min-height:64px}
+#tb{position:absolute;left:0;right:0;bottom:0;height:56px;background:rgba(13,11,28,.9);border-top:1px solid var(--ln);display:flex;align-items:center;justify-content:space-between;padding:0 10px}
+#tc{display:flex;gap:2px}
+.tn{width:44px;height:44px;border-radius:10px;background:none;border:0;display:flex;align-items:center;justify-content:center;position:relative}
+.tn.on{background:rgba(255,255,255,.14)}
+.tn.on::after{content:"";position:absolute;bottom:3px;width:14px;height:3px;border-radius:2px;background:var(--b)}
+#cl{min-width:70px;text-align:right;font-size:12px;line-height:1.3}
+#cl small{display:block;color:var(--mu);font-size:11px}
+#sp{min-width:70px}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="dk"></div>
+<section id="win" aria-label="Jendela aplikasi"><div class="tbar"><span id="wt"></span><div><button class="wb" id="wm" aria-label="Minimalkan"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><button class="wb" id="wx" aria-label="Tutup"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></div><div id="wb"></div></section>
+<section id="st" aria-label="Menu Mulai"><input id="q" type="search" placeholder="Cari aplikasi" aria-label="Cari aplikasi" autocomplete="off"><div class="sh">Disematkan</div><div id="sg"></div></section>
+<nav id="tb"><div id="sp"></div><div id="tc"></div><div id="cl"></div></nav>
+</div>
+<script>
+var P={
+folder:'<path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+pad:'<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-3.9 3.2l-1 6A3 3 0 0 0 6 17l1.6-2h8.8L18 17a3 3 0 0 0 4.2-2.8l-1-6A4 4 0 0 0 17.3 5z"/>',
+cam:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m3 18 6-5 4 3 3-2 5 4"/>',
+msg:'<path d="M4 5h16v11H9l-5 4z"/>',
+tel:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+grid:'<circle cx="6" cy="6" r="1.5"/><circle cx="12" cy="6" r="1.5"/><circle cx="18" cy="6" r="1.5"/><circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/><circle cx="6" cy="18" r="1.5"/><circle cx="12" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/>'
+};
+var A=[['file','File','folder'],['web','Peramban','globe'],['set','Pengaturan','gear'],['game','Game','pad'],['cam','Kamera','cam'],['gal','Galeri','img'],['msg','Pesan','msg'],['tel','Telepon','tel']];
+var cur=null,$=function(s){return document.querySelector(s)};
+function sv(k){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true">'+P[k]+'</svg>'}
+function body(id,n){
+ if(id==='file'){var f=['Unduhan','Dokumen','Gambar','Musik','Video','Game'];return '<div class="gr">'+f.map(function(x){return '<button class="fo">'+sv('folder')+x+'</button>'}).join('')+'</div>'}
+ if(id==='web')return '<div class="ad">Cari atau ketik alamat</div><p class="tx">Ini halaman contoh. Peramban sungguhan belum tersambung.</p>';
+ if(id==='set')return ['Wi-Fi','Bluetooth','Mode pesawat'].map(function(x,k){return '<button class="row" role="switch" aria-checked="'+(k<2)+'">'+x+'<span class="sw"></span></button>'}).join('');
+ if(id==='game')return '<div class="gr"><div class="fo">[NAMA GAME]</div><div class="fo">[NAMA GAME]</div><div class="fo">[NAMA GAME]</div></div>';
+ return '<p class="tx">'+n+' hanya contoh tampilan. Belum ada isinya.</p>';
+}
+function openApp(id){var a=A.filter(function(x){return x[0]===id})[0];cur=id;$('#wt').textContent=a[1];$('#wb').innerHTML=body(id,a[1]);$('#win').className='on';$('#st').className='';draw()}
+function closeWin(){cur=null;$('#win').className='';draw()}
+function draw(){
+ $('#dk').innerHTML=A.slice(0,4).map(function(a){return '<button class="di" data-o="'+a[0]+'"><span class="ib">'+sv(a[2])+'</span>'+a[1]+'</button>'}).join('');
+ $('#tc').innerHTML='<button class="tn'+($('#st').className?' on':'')+'" data-s="1" aria-label="Mulai" style="color:var(--b)">'+sv('grid')+'</button>'+A.slice(0,4).map(function(a){return '<button class="tn'+(cur===a[0]?' on':'')+'" data-o="'+a[0]+'" aria-label="'+a[1]+'">'+sv(a[2])+'</button>'}).join('');
+}
+var R=null;
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return '&#'+c.charCodeAt(0)+';'})}
+function grid(){var t=$('#q').value.toLowerCase();
+ if(window.Android){if(!R){try{R=JSON.parse(Android.apps()).sort(function(a,b){return a.n.localeCompare(b.n)})}catch(e){R=[]}}
+  $('#sg').innerHTML=R.filter(function(a){return a.n.toLowerCase().indexOf(t)>-1}).map(function(a){return '<button class="ap" data-p="'+esc(a.p)+'"><span class="ib">'+esc(a.n.charAt(0).toUpperCase())+'</span>'+esc(a.n)+'</button>'}).join('');return}
+$('#sg').innerHTML=A.filter(function(a){return a[1].toLowerCase().indexOf(t)>-1}).map(function(a){return '<button class="ap" data-o="'+a[0]+'"><span class="ib">'+sv(a[2])+'</span>'+a[1]+'</button>'}).join('')}
+function clock(){var d=new Date(),p=function(n){return ('0'+n).slice(-2)};$('#cl').innerHTML=p(d.getHours())+'.'+p(d.getMinutes())+'<small>'+p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+'</small>'}
+document.addEventListener('click',function(e){
+ var o=e.target.closest('[data-o]'),s=e.target.closest('[data-s]'),w=e.target.closest('[role=switch]');
+ var pk=e.target.closest('[data-p]');if(pk){Android.launch(pk.getAttribute('data-p'));$('#st').className='';draw();return}
+ if(o){openApp(o.getAttribute('data-o'));return}
+ if(s){var st=$('#st');st.className=st.className?'':'on';if(st.className){$('#q').value='';R=null;grid()}draw();return}
+ if(w){w.setAttribute('aria-checked',w.getAttribute('aria-checked')!=='true');return}
+ if(e.target.closest('#wx,#wm')){closeWin();return}
+ if(!e.target.closest('#st')&&$('#st').className){$('#st').className='';draw()}
+});
+$('#q').addEventListener('input',grid);
+draw();grid();clock();setInterval(clock,15000);
+</script>
+</body>
+  </html>
