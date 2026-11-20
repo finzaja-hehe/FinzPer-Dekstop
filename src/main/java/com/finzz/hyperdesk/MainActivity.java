@@ -2,7 +2,9 @@ package com.finzz.hyperdesk;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -10,9 +12,15 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -116,6 +124,18 @@ public class MainActivity extends Activity {
         }
     }
 
+    // Coba buka layar pengaturan sistem; pakai alternatif kalau yang pertama tidak ada
+    private void openSettings(String... actions) {
+        for (String a : actions) {
+            try {
+                Intent i = new Intent(a);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                return;
+            } catch (Exception e) { /* coba berikutnya */ }
+        }
+    }
+
     public class Bridge {
         @JavascriptInterface
         public String apps() {
@@ -181,6 +201,70 @@ public class MainActivity extends Activity {
                         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
                     } catch (Exception e) { }
+                }
+            });
+        }
+
+        // Status Wi-Fi, data seluler, dan baterai untuk ikon di taskbar
+        @JavascriptInterface
+        public String status() {
+            JSONObject o = new JSONObject();
+            boolean wifi = false, data = false;
+            int level = 0, bat = 100;
+            boolean chg = false;
+
+            try {
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                for (Network n : cm.getAllNetworks()) {
+                    NetworkCapabilities c = cm.getNetworkCapabilities(n);
+                    if (c == null || !c.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) continue;
+                    if (c.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) wifi = true;
+                    if (c.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) data = true;
+                }
+            } catch (Exception e) { /* izin ACCESS_NETWORK_STATE belum ada */ }
+
+            if (wifi) {
+                try {
+                    WifiManager wm = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                    int rssi = wm.getConnectionInfo().getRssi();
+                    level = WifiManager.calculateSignalLevel(rssi, 5);
+                } catch (Exception e) { level = 3; }
+            }
+
+            try {
+                Intent b = registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+                if (b != null) {
+                    int lv = b.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+                    int sc = b.getIntExtra(BatteryManager.EXTRA_SCALE, 100);
+                    int st = b.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+                    if (lv >= 0 && sc > 0) bat = lv * 100 / sc;
+                    chg = st == BatteryManager.BATTERY_STATUS_CHARGING || st == BatteryManager.BATTERY_STATUS_FULL;
+                }
+            } catch (Exception e) { }
+
+            try {
+                o.put("wifi", wifi);
+                o.put("wl", level);
+                o.put("data", data);
+                o.put("bat", bat);
+                o.put("chg", chg);
+            } catch (Exception e) { }
+            return o.toString();
+        }
+
+        // Dipanggil saat ikon sistem di taskbar diketuk
+        @JavascriptInterface
+        public void openSys(final String what) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if ("wifi".equals(what)) {
+                        openSettings(Settings.ACTION_WIFI_SETTINGS, Settings.ACTION_WIRELESS_SETTINGS, Settings.ACTION_SETTINGS);
+                    } else if ("data".equals(what)) {
+                        openSettings(Settings.ACTION_DATA_ROAMING_SETTINGS, Settings.ACTION_WIRELESS_SETTINGS, Settings.ACTION_SETTINGS);
+                    } else {
+                        openSettings(Intent.ACTION_POWER_USAGE_SUMMARY, Settings.ACTION_BATTERY_SAVER_SETTINGS, Settings.ACTION_SETTINGS);
+                    }
                 }
             });
         }
