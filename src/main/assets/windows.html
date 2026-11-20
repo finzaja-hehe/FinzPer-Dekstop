@@ -70,7 +70,13 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tn.act::after{content:"";position:absolute;bottom:2px;width:12px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--f1),var(--f2));box-shadow:0 0 6px var(--f2)}
 #sp{min-width:90px;flex:none}
 #ty{min-width:90px;flex:none;display:flex;align-items:center;justify-content:flex-end;gap:8px}
-#ty .i{width:14px;height:14px;stroke-width:1.8}
+#ty .i{width:15px;height:15px;stroke-width:1.8}
+#sy{display:flex;align-items:center;gap:1px}
+.sb{height:30px;min-width:24px;padding:0 4px;border:0;border-radius:4px;background:none;display:flex;align-items:center;gap:3px;font-size:9px}
+.sb:active{background:var(--c2)}
+.sb.lo{color:#ff6b6b}
+.hs #sy{display:none}
+.nbp #ia span{display:none}
 #cl{text-align:right;font-size:10px;line-height:1.3}
 #pm{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);width:min(60vw,240px);background:var(--sf);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid var(--g1);border-radius:8px;padding:6px;box-sizing:border-box;display:none;flex-direction:column;gap:2px;z-index:5;box-shadow:0 8px 40px var(--g1)}
 #pm.on{display:flex}
@@ -113,7 +119,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tl #sp{min-width:0}
 .tl #tc{flex:1;margin-left:6px}
 .tl #tb{justify-content:flex-start}
-.hs #ty .i{display:none}
 .na .di[data-ad]{display:none}
 .nr #rc{display:none}
 .nr #mn{grid-column:1/-1}
@@ -165,7 +170,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 </section>
 <section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pk" data-a="desk"></button><button class="pb" id="pa" data-a="pin"></button><button class="pb" id="pf" data-a="float">Buka mengambang (Android)</button><button class="pb" id="pc" data-a="close">Tutup jendela</button><button class="pb" data-a="no">Batal</button></section>
 <section id="fs" aria-label="Pengaturan desktop"><div id="fn"></div><div id="fc"></div><input id="ff" type="file" accept="image/*,video/*" hidden></section>
-<nav id="tb"><div id="sp"><button class="tn" id="gb" aria-label="Pengaturan desktop"></button></div><div id="tc"></div><div id="ty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/></svg><div id="cl"></div></div></nav>
+<nav id="tb"><div id="sp"><button class="tn" id="gb" aria-label="Pengaturan desktop"></button></div><div id="tc"></div><div id="ty"><div id="sy"><button class="sb" id="iw" data-sys="wifi" aria-label="Wi-Fi"></button><button class="sb" id="im" data-sys="data" aria-label="Data seluler"></button><button class="sb" id="ia" data-sys="bat" aria-label="Baterai"></button></div><div id="cl"></div></div></nav>
 </div>
 <script>
 var K=['#0078d4','#e74856','#10893e','#f7630c','#8764b8','#00b7c3','#c239b3','#ca5010'];
@@ -266,7 +271,7 @@ function openApp(p){
 }
 /* ===== Pengaturan desktop (FINZ) ===== */
 var TH=[['Ungu Petir','#a855f7','#3b82f6'],['Cyan Neon','#22d3ee','#6366f1'],['Magenta','#ec4899','#8b5cf6'],['Matrix','#22c55e','#06b6d4'],['Api','#f97316','#ef4444']];
-var D={th:0,c1:'#a855f7',c2:'#3b82f6',gl:45,wk:'def',wf:0,dim:25,bl:0,mu:1,lg:1,an:1,tb:84,tl:0,ck:1,h24:1,sc:0,dt:1,sy:1,is:100,ig:0,lb:1,ad:1,bw:1,un:'HyperDesk',rc:1};
+var D={th:0,c1:'#a855f7',c2:'#3b82f6',gl:45,wk:'def',wf:0,dim:25,bl:0,mu:1,lg:1,an:1,tb:84,tl:0,ck:1,h24:1,sc:0,dt:1,sy:1,bp:1,is:100,ig:0,lb:1,ad:1,bw:1,un:'HyperDesk',rc:1};
 var S=Object.assign({},D);try{S=Object.assign(S,JSON.parse(localStorage.getItem('fz')||'{}'))}catch(e){}
 var RS=document.documentElement.style,wcur=null,asset=false,tab=0;
 function save(){try{localStorage.setItem('fz',JSON.stringify(S))}catch(e){}}
@@ -292,7 +297,7 @@ function applyS(){
  var t=S.th>=0?(TH[S.th]||TH[0]):['',S.c1,S.c2],g=S.gl/100,A=$('#app').classList;
  RS.setProperty('--f1',t[1]);RS.setProperty('--f2',t[2]);RS.setProperty('--g1',rgba(t[1],g));RS.setProperty('--g2',rgba(t[2],g));
  RS.setProperty('--tbo',S.tb/100);RS.setProperty('--is',S.is/100);RS.setProperty('--ig',S.ig+'px');
- A.toggle('nl',!S.lb);A.toggle('an',!!S.an);A.toggle('fit',!!S.wf);A.toggle('tl',!!S.tl);A.toggle('hs',!S.sy);A.toggle('na',!S.ad);A.toggle('nr',!S.rc);
+ A.toggle('nl',!S.lb);A.toggle('an',!!S.an);A.toggle('fit',!!S.wf);A.toggle('tl',!!S.tl);A.toggle('hs',!S.sy);A.toggle('nbp',!S.bp);A.toggle('na',!S.ad);A.toggle('nr',!S.rc);
  $('#wm').style.filter='blur('+S.bl+'px)';$('#wd').style.opacity=S.dim/100;
  $('#un').textContent=S.un||'HyperDesk';$('#av').textContent=(S.un||'H').charAt(0).toUpperCase();
  var v=$('#wv');if(v)v.muted=!!S.mu;
@@ -306,10 +311,10 @@ function view(){
  var h='';
  if(tab==0)h=row('Foto / video dari galeri','<button class="fb" data-pick="1">Pilih…</button>')+row('Wallpaper Finz bawaan','<button class="fb" data-wdef="1">Pakai</button>')+chk('wf','Pas di layar (tanpa dipotong)')+rng('dim',0,85,['Redupkan','%'])+rng('bl',0,20,['Blur','px'])+chk('mu','Bisukan video');
  if(tab==1)h=row('Warna neon','<span>'+TH.map(function(t,i){return '<button class="sw'+(i==S.th?' on':'')+'" data-th="'+i+'" title="'+t[0]+'" style="background:linear-gradient(135deg,'+t[1]+','+t[2]+')"></button>'}).join('')+'</span>')+row('Warna kustom','<span><input type="color" data-col="c1" value="'+S.c1+'"><input type="color" data-col="c2" value="'+S.c2+'"></span>')+rng('gl',0,100,['Intensitas cahaya','%'])+chk('lg','Logo FINZ di wallpaper')+chk('an','Animasi cahaya');
- if(tab==2)h=chk('tl','Ikon taskbar rata kiri')+rng('tb',30,100,['Transparansi','%'])+chk('ck','Tampilkan jam')+chk('h24','Format 24 jam')+chk('sc','Tampilkan detik')+chk('dt','Tampilkan tanggal')+chk('sy','Ikon sistem (Wi-Fi, suara, baterai)');
+ if(tab==2)h=chk('tl','Ikon taskbar rata kiri')+rng('tb',30,100,['Transparansi','%'])+chk('ck','Tampilkan jam')+chk('h24','Format 24 jam')+chk('sc','Tampilkan detik')+chk('dt','Tampilkan tanggal')+chk('sy','Ikon sistem (Wi-Fi, data, baterai)')+chk('bp','Tampilkan persen baterai');
  if(tab==3)h=chk('bw','Aplikasi jendela (Catatan, Kalkulator, Browser)')+row('Tutup semua jendela','<button class="fb" data-wclose="1">Tutup</button>')+rng('is',70,150,['Ukuran ikon','%'])+rng('ig',0,24,['Jarak ikon','px'])+chk('lb','Tampilkan nama ikon')+chk('ad','Tombol + Tambah')+row('Ikon bawaan Google','<button class="fb" data-dreset="1">Pulihkan</button>')+row('Kosongkan desktop','<button class="fb" data-dclear="1">Kosongkan</button>');
  if(tab==4)h=row('Nama pengguna','<input type="text" data-txt="un" maxlength="16" value="'+esc(S.un)+'">')+chk('rc','Tampilkan rekomendasi')+row('Hapus riwayat rekomendasi','<button class="fb" data-rclr="1">Hapus</button>')+row('Lepas semua sematan','<button class="fb" data-pclr="1">Lepas</button>');
- if(tab==5)h='<p class="nb">FINZ Desktop UI v1.2<br>Pengaturan tersimpan otomatis.</p>'+row('Pengaturan Android','<button class="fb" data-and="1">Buka</button>')+row('Reset semua pengaturan','<button class="fb" data-reset="1">Reset</button>');
+ if(tab==5)h='<p class="nb">FINZ Desktop UI v1.3<br>Pengaturan tersimpan otomatis.</p>'+row('Pengaturan Android','<button class="fb" data-and="1">Buka</button>')+row('Reset semua pengaturan','<button class="fb" data-reset="1">Reset</button>');
  $('#fc').innerHTML=h;
 }
 function openFs(){$('#st').className='';$('#pm').className='';closePick();closeTv();$('#fs').className='on';$('#gb').classList.add('on');view();draw()}
@@ -342,6 +347,32 @@ $('#fs').addEventListener('change',function(e){
  if(t.id==='ff'){var f=t.files[0];if(!f)return;putW(f,function(ok){t.value='';if(!ok){alert('Gagal menyimpan wallpaper');return}S.wk=f.type.indexOf('video')===0?'vid':'img';save();setWall();applyS()})}
 });
 /* ===== akhir pengaturan ===== */
+/* ===== Status sistem: Wi-Fi, data seluler, baterai ===== */
+var SYS={w:0,wl:0,d:0,b:100,c:0};
+function icoW(){
+ var n=SYS.w?Math.max(1,Math.round((SYS.wl+1)*3/5)):0,o=function(k){return k<=n?'':' style="opacity:.3"'};
+ return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"'+(SYS.w?'':' style="opacity:.55"')+'><path d="M2 9a15 15 0 0 1 20 0"'+o(3)+'/><path d="M5 12.5a10 10 0 0 1 14 0"'+o(2)+'/><path d="M8.5 16a5 5 0 0 1 7 0"'+o(1)+'/><path d="M12 19.5h.01"/>'+(SYS.w?'':'<path d="M3 3l18 18" style="stroke:#ff6b6b"/>')+'</svg>';
+}
+function icoD(){
+ return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"'+(SYS.d?'':' style="opacity:.55"')+'><path d="M5 20v-3M10 20v-7M15 20V9M20 20V4" style="stroke-width:2.6"'+(SYS.d?'':' opacity=".4"')+'/>'+(SYS.d?'':'<path d="M3 3l18 18" style="stroke:#ff6b6b"/>')+'</svg>';
+}
+function icoB(){
+ var p=Math.max(0,Math.min(100,SYS.b)),fc=SYS.c?'#4ade80':(p<=15?'#ff6b6b':'currentColor'),w=Math.round(13*p/100);
+ return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/>'+(w>0?'<rect x="4" y="9" width="'+w+'" height="6" rx="1" style="fill:'+fc+';stroke:none"/>':'')+(SYS.c?'<path d="M11 8l-3 5h4l-2 4" style="stroke:#02010a;stroke-width:1.6;fill:none"/>':'')+'</svg>';
+}
+function sysDraw(){
+ $('#iw').innerHTML=icoW();$('#im').innerHTML=icoD();
+ $('#ia').innerHTML=icoB()+'<span>'+SYS.b+'%</span>';
+ $('#ia').classList.toggle('lo',SYS.b<=15&&!SYS.c);
+ $('#iw').title=SYS.w?'Wi-Fi tersambung':'Wi-Fi tidak tersambung';
+ $('#im').title=SYS.d?'Data seluler aktif':'Data seluler mati';
+}
+function sysPoll(){
+ if(window.Android&&Android.status){
+  try{var s=JSON.parse(Android.status());SYS={w:s.wifi?1:0,wl:s.wl||0,d:s.data?1:0,b:s.bat,c:s.chg?1:0}}catch(e){}
+ }else{SYS.w=navigator.onLine?1:0;SYS.wl=3}
+ sysDraw();
+}
 /* ===== Jendela mengambang ===== */
 var wins=[],wid=0,zc=10,fwin=null;
 var WA={
@@ -401,10 +432,13 @@ document.addEventListener('pointerdown',function(e){lp=false;clearTimeout(lt);va
 ['pointerup','pointercancel'].forEach(function(t){document.addEventListener(t,function(){clearTimeout(lt)})});
 document.addEventListener('contextmenu',function(e){e.preventDefault()});
 ['gesturestart','dblclick'].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()})});
-document.addEventListener('visibilitychange',function(){if(!document.hidden){act=null;draw();if($('#tv').className)tvDraw()}});
+document.addEventListener('visibilitychange',function(){if(!document.hidden){act=null;draw();sysPoll();if($('#tv').className)tvDraw()}});
+window.addEventListener('online',sysPoll);window.addEventListener('offline',sysPoll);
 document.addEventListener('click',function(e){
  if(lp){lp=false;return}
  if(e.target.closest('[data-and]')){if(window.Android)Android.launch('com.android.settings');return}
+ var sy=e.target.closest('[data-sys]');
+ if(sy){if(window.Android&&Android.openSys)Android.openSys(sy.dataset.sys);return}
  if(e.target.closest('#fs')){fsClick(e);return}
  if(e.target.closest('#sx,#gb')){if($('#fs').className)closeFs();else openFs();return}
  if($('#fs').className){closeFs();return}
@@ -437,7 +471,7 @@ $('#q').addEventListener('input',grid);
 $('#aq').addEventListener('input',pick);
 $('#sx').innerHTML=gear();$('#gb').innerHTML=gear();
 applyS();setWall();draw();grid();clock();setInterval(clock,1000);
+sysPoll();setInterval(sysPoll,5000);
 </script>
 </body>
-                                                                                                        </html>
-                                                                                                                            
+                                                                                                                                                   </html>
