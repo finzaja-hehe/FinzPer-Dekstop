@@ -1,16 +1,20 @@
 package com.finzz.hyperdesk;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -140,6 +144,45 @@ public class MainActivity extends Activity {
                 Intent i = getPackageManager().getLaunchIntentForPackage(pkg);
                 if (i != null) startActivity(i);
             } catch (Exception e) { }
+        }
+
+        // Buka aplikasi dalam jendela mengambang (freeform).
+        // Hanya berhasil di perangkat yang mendukung freeform; selain itu terbuka layar penuh.
+        @JavascriptInterface
+        public void launchFloat(final String pkg) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Intent i = getPackageManager().getLaunchIntentForPackage(pkg);
+                        if (i == null) return;
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                        DisplayMetrics m = getResources().getDisplayMetrics();
+                        int w = m.widthPixels, h = m.heightPixels;
+                        ActivityOptions o = ActivityOptions.makeBasic();
+                        if (Build.VERSION.SDK_INT >= 24) {
+                            o.setLaunchBounds(new Rect(w / 6, h / 8, w * 5 / 6, h * 7 / 8));
+                        }
+                        startActivity(i, o.toBundle());
+                    } catch (Exception e) { }
+                }
+            });
+        }
+
+        // Buka alamat web di browser HP (dipakai tombol ↗ di jendela Browser)
+        @JavascriptInterface
+        public void openUrl(final String url) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (url == null || !url.startsWith("http")) return;
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+                    } catch (Exception e) { }
+                }
+            });
         }
     }
     }
