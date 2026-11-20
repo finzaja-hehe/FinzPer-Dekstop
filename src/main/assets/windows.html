@@ -29,7 +29,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 #wd{position:absolute;inset:0;background:#000;opacity:.25;pointer-events:none}
 #dk{position:absolute;inset:0 0 40px 0;padding:4px;display:flex;flex-direction:column;flex-wrap:wrap;align-content:flex-start;gap:0;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;scrollbar-width:none}
 #dk::-webkit-scrollbar{display:none}
-.di{width:calc(60px*var(--is));height:calc(64px*var(--is));padding:3px 1px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:1px solid transparent;border-radius:3px;font-size:calc(10px*var(--is));line-height:1.15;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.9);flex:none}
+.di{width:calc(60px*var(--is));height:calc(64px*var(--is));padding:3px 1px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:1px solid transparent;border-radius:3px;font-size:calc(10px*var(--is));line-height:1.15;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.9);flex:none;margin:calc(var(--ig,0px)/2)}
 .di .ib{width:calc(32px*var(--is));height:calc(32px*var(--is))}
 .di:active{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25)}
 .di span:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
@@ -95,8 +95,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* menu pengaturan desktop */
 #fs{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);width:min(92vw,640px);height:calc(100% - 56px);display:none;z-index:6;border-radius:10px;overflow:hidden;background:var(--sf);border:1px solid var(--g1);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 8px 40px var(--g1)}
 #fs.on{display:flex}
-#fn{width:116px;flex:none;padding:8px 6px;background:rgba(0,0,0,.3);display:flex;flex-direction:column;gap:2px}
-#fn button{min-height:34px;border:0;background:none;border-radius:5px;text-align:left;padding:0 8px;font-size:12px}
+#fn{width:116px;flex:none;padding:8px 6px;background:rgba(0,0,0,.3);display:flex;flex-direction:column;gap:2px;overflow:auto}
+#fn button{min-height:34px;border:0;background:none;border-radius:5px;text-align:left;padding:0 8px;font-size:12px;flex:none}
 #fn button.on{background:linear-gradient(90deg,var(--g1),transparent);box-shadow:inset 3px 0 var(--f1)}
 #fn .x{margin-top:auto;color:var(--mu)}
 #fc{flex:1;min-width:0;overflow:auto;padding:8px 14px;font-size:12px}
@@ -105,6 +105,18 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sw{width:26px;height:26px;border-radius:50%;border:2px solid transparent;margin-left:6px}
 .sw.on{border-color:#fff}
 #fs input[type=range]{width:130px;accent-color:var(--f1)}
+#fs input[type=color]{width:34px;height:26px;border:0;padding:0;background:none;margin-left:6px}
+#fs input[type=text]{width:130px;height:26px;box-sizing:border-box;border-radius:5px;border:1px solid var(--g1);background:rgba(255,255,255,.07);color:#fff;padding:0 8px;font:inherit;font-size:12px;user-select:text;-webkit-user-select:text}
+/* efek dari pengaturan */
+.fit #wb:not(.d){background-size:contain!important;background-repeat:no-repeat!important}
+.fit #wv{object-fit:contain}
+.tl #sp{min-width:0}
+.tl #tc{flex:1;margin-left:6px}
+.tl #tb{justify-content:flex-start}
+.hs #ty .i{display:none}
+.na .di[data-ad]{display:none}
+.nr #rc{display:none}
+.nr #mn{grid-column:1/-1}
 </style>
 </head>
 <body>
@@ -115,7 +127,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 <input id="q" type="search" placeholder="Ketik di sini untuk mencari" aria-label="Cari aplikasi" autocomplete="off">
 <div id="mn"><div class="sh"><span id="mt">Disematkan</span><button id="ma" data-m="1">Semua aplikasi ›</button></div><div id="sg"></div></div>
 <div id="rc"><div class="sh"><span>Rekomendasi</span></div><div id="rl"></div></div>
-<div class="sf"><span class="av">H</span><span>HyperDesk</span><button class="fb" data-and="1">Pengaturan HP</button><button class="tn" id="sx" aria-label="Pengaturan desktop"></button></div>
+<div class="sf"><span class="av" id="av">H</span><span id="un">HyperDesk</span><button class="fb" data-and="1">Pengaturan HP</button><button class="tn" id="sx" aria-label="Pengaturan desktop"></button></div>
 </section>
 <section id="ps" aria-label="Tambah ke desktop">
 <input id="aq" type="search" placeholder="Cari aplikasi untuk ditambahkan" aria-label="Cari aplikasi" autocomplete="off">
@@ -128,7 +140,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 </section>
 <section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pk" data-a="desk"></button><button class="pb" id="pa" data-a="pin"></button><button class="pb" id="pc" data-a="close">Tutup jendela</button><button class="pb" data-a="no">Batal</button></section>
 <section id="fs" aria-label="Pengaturan desktop"><div id="fn"></div><div id="fc"></div><input id="ff" type="file" accept="image/*,video/*" hidden></section>
-<nav id="tb"><div id="sp"></div><div id="tc"></div><div id="ty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/></svg><div id="cl"></div></div></nav>
+<nav id="tb"><div id="sp"><button class="tn" id="gb" aria-label="Pengaturan desktop"></button></div><div id="tc"></div><div id="ty"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/></svg><div id="cl"></div></div></nav>
 </div>
 <script>
 var K=['#0078d4','#e74856','#10893e','#f7630c','#8764b8','#00b7c3','#c239b3','#ca5010'];
@@ -202,7 +214,7 @@ function toggleTv(){
  draw();
 }
 function draw(){
- $('#dk').innerHTML=deskList().map(function(a){return '<button class="di" '+data(a)+'>'+tile(a)+'<span>'+esc(a.n)+'</span></button>'}).join('')+'<button class="di" data-set="1" aria-label="Pengaturan desktop"><span class="ib lt" style="background:linear-gradient(135deg,var(--f1),var(--f2))">'+gear()+'</span><span>Pengaturan</span></button><button class="di" data-ad="1" aria-label="Tambah aplikasi ke desktop"><span class="ib lt pl">+</span><span>Tambah</span></button>';
+ $('#dk').innerHTML=deskList().map(function(a){return '<button class="di" '+data(a)+'>'+tile(a)+'<span>'+esc(a.n)+'</span></button>'}).join('')+'<button class="di" data-ad="1" aria-label="Tambah aplikasi ke desktop"><span class="ib lt pl">+</span><span>Tambah</span></button>';
  var tbar=pinned().slice(0,6);
  var seen=tbar.map(function(a){return a.p});
  opn.forEach(function(p){var a=byP(p);if(a&&seen.indexOf(p)<0){tbar.push(a);seen.push(p)}});
@@ -219,7 +231,7 @@ function grid(){
  $('#rl').innerHTML=rl.length?rl.map(function(a){return '<button class="rc" '+data(a)+'>'+tile(a)+'<span>'+esc(a.n)+'<small>Baru dibuka</small></span></button>'}).join(''):'<p class="nb">Aplikasi yang baru kamu buka akan muncul di sini.</p>';
 }
 function sheet(p,n){var m=$('#pm');m.dataset.p=p;m.dataset.n=n;$('#pt').textContent=n;$('#pk').textContent=inDesk(p)?'Hapus dari desktop':'Tambahkan ke desktop';$('#pa').textContent=isPin(p)?'Lepas sematan':'Sematkan ke Mulai dan taskbar';$('#pc').style.display=isOpen(p)?'':'none';m.className='on'}
-function clock(){var d=new Date(),p=function(n){return ('0'+n).slice(-2)};$('#cl').innerHTML=p(d.getHours())+'.'+p(d.getMinutes())+'<br>'+p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()}
+function clock(){var d=new Date(),p=function(n){return ('0'+n).slice(-2)},h=d.getHours(),x='';if(!S.h24){x=h<12?' AM':' PM';h=h%12||12}var t=p(h)+'.'+p(d.getMinutes())+(S.sc?'.'+p(d.getSeconds()):'')+x;$('#cl').innerHTML=(S.ck?t:'')+((S.ck&&S.dt)?'<br>':'')+(S.dt?p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear():'')}
 function openApp(p){
  if(window.Android)Android.launch(p);
  if(!isOpen(p)){opn.push(p);wr('opn',opn)}
@@ -229,7 +241,7 @@ function openApp(p){
 }
 /* ===== Pengaturan desktop (FINZ) ===== */
 var TH=[['Ungu Petir','#a855f7','#3b82f6'],['Cyan Neon','#22d3ee','#6366f1'],['Magenta','#ec4899','#8b5cf6'],['Matrix','#22c55e','#06b6d4'],['Api','#f97316','#ef4444']];
-var D={th:0,wk:'def',dim:25,bl:0,tb:84,is:100,lb:1,lg:1,an:1,mu:1};
+var D={th:0,c1:'#a855f7',c2:'#3b82f6',gl:45,wk:'def',wf:0,dim:25,bl:0,mu:1,lg:1,an:1,tb:84,tl:0,ck:1,h24:1,sc:0,dt:1,sy:1,is:100,ig:0,lb:1,ad:1,un:'HyperDesk',rc:1};
 var S=Object.assign({},D);try{S=Object.assign(S,JSON.parse(localStorage.getItem('fz')||'{}'))}catch(e){}
 var RS=document.documentElement.style,wcur=null,asset=false,tab=0;
 function save(){try{localStorage.setItem('fz',JSON.stringify(S))}catch(e){}}
@@ -252,27 +264,31 @@ function setWall(){
  });
 }
 function applyS(){
- var t=TH[S.th]||TH[0];
- RS.setProperty('--f1',t[1]);RS.setProperty('--f2',t[2]);RS.setProperty('--g1',rgba(t[1],.45));RS.setProperty('--g2',rgba(t[2],.45));
- RS.setProperty('--tbo',S.tb/100);RS.setProperty('--is',S.is/100);
- $('#app').classList.toggle('nl',!S.lb);$('#app').classList.toggle('an',!!S.an);
+ var t=S.th>=0?(TH[S.th]||TH[0]):['',S.c1,S.c2],g=S.gl/100,A=$('#app').classList;
+ RS.setProperty('--f1',t[1]);RS.setProperty('--f2',t[2]);RS.setProperty('--g1',rgba(t[1],g));RS.setProperty('--g2',rgba(t[2],g));
+ RS.setProperty('--tbo',S.tb/100);RS.setProperty('--is',S.is/100);RS.setProperty('--ig',S.ig+'px');
+ A.toggle('nl',!S.lb);A.toggle('an',!!S.an);A.toggle('fit',!!S.wf);A.toggle('tl',!!S.tl);A.toggle('hs',!S.sy);A.toggle('na',!S.ad);A.toggle('nr',!S.rc);
  $('#wm').style.filter='blur('+S.bl+'px)';$('#wd').style.opacity=S.dim/100;
- var v=$('#wv');if(v)v.muted=!!S.mu;wlogo();
+ $('#un').textContent=S.un||'HyperDesk';$('#av').textContent=(S.un||'H').charAt(0).toUpperCase();
+ var v=$('#wv');if(v)v.muted=!!S.mu;
+ wlogo();clock();
 }
 function row(l,c){return '<div class="fr"><span>'+l+'</span>'+c+'</div>'}
 function rng(k,a,z,u){return row(u[0]+' <b data-v="'+k+'">'+S[k]+'</b>'+u[1],'<input type="range" data-k="'+k+'" min="'+a+'" max="'+z+'" value="'+S[k]+'">')}
 function chk(k,l){return row(l,'<input type="checkbox" data-c="'+k+'"'+(S[k]?' checked':'')+'>')}
 function view(){
- $('#fn').innerHTML=['Latar belakang','Tema warna','Tampilan','Tentang'].map(function(n,i){return '<button data-tab="'+i+'" class="'+(i==tab?'on':'')+'">'+n+'</button>'}).join('')+'<button data-fx="1" class="x">\u2715 Tutup</button>';
+ $('#fn').innerHTML=['Latar belakang','Tema warna','Taskbar','Desktop','Menu Mulai','Tentang'].map(function(n,i){return '<button data-tab="'+i+'" class="'+(i==tab?'on':'')+'">'+n+'</button>'}).join('')+'<button data-fx="1" class="x">\u2715 Tutup</button>';
  var h='';
- if(tab==0)h=row('Foto / video dari galeri','<button class="fb" data-pick="1">Pilih…</button>')+row('Wallpaper Finz bawaan','<button class="fb" data-wdef="1">Pakai</button>')+rng('dim',0,85,['Redupkan','%'])+rng('bl',0,20,['Blur','px'])+chk('mu','Bisukan video');
- if(tab==1)h=row('Warna neon','<span>'+TH.map(function(t,i){return '<button class="sw'+(i==S.th?' on':'')+'" data-th="'+i+'" title="'+t[0]+'" style="background:linear-gradient(135deg,'+t[1]+','+t[2]+')"></button>'}).join('')+'</span>')+chk('lg','Logo FINZ di wallpaper')+chk('an','Animasi cahaya');
- if(tab==2)h=rng('is',70,150,['Ukuran ikon','%'])+chk('lb','Tampilkan nama ikon')+rng('tb',30,100,['Taskbar','%'])+row('Pengaturan Android','<button class="fb" data-and="1">Buka</button>');
- if(tab==3)h='<p class="nb">FINZ Desktop UI v1.0<br>Pengaturan tersimpan otomatis.</p>'+row('Kembalikan semua ke awal','<button class="fb" data-reset="1">Reset</button>');
+ if(tab==0)h=row('Foto / video dari galeri','<button class="fb" data-pick="1">Pilih…</button>')+row('Wallpaper Finz bawaan','<button class="fb" data-wdef="1">Pakai</button>')+chk('wf','Pas di layar (tanpa dipotong)')+rng('dim',0,85,['Redupkan','%'])+rng('bl',0,20,['Blur','px'])+chk('mu','Bisukan video');
+ if(tab==1)h=row('Warna neon','<span>'+TH.map(function(t,i){return '<button class="sw'+(i==S.th?' on':'')+'" data-th="'+i+'" title="'+t[0]+'" style="background:linear-gradient(135deg,'+t[1]+','+t[2]+')"></button>'}).join('')+'</span>')+row('Warna kustom','<span><input type="color" data-col="c1" value="'+S.c1+'"><input type="color" data-col="c2" value="'+S.c2+'"></span>')+rng('gl',0,100,['Intensitas cahaya','%'])+chk('lg','Logo FINZ di wallpaper')+chk('an','Animasi cahaya');
+ if(tab==2)h=chk('tl','Ikon taskbar rata kiri')+rng('tb',30,100,['Transparansi','%'])+chk('ck','Tampilkan jam')+chk('h24','Format 24 jam')+chk('sc','Tampilkan detik')+chk('dt','Tampilkan tanggal')+chk('sy','Ikon sistem (Wi-Fi, suara, baterai)');
+ if(tab==3)h=rng('is',70,150,['Ukuran ikon','%'])+rng('ig',0,24,['Jarak ikon','px'])+chk('lb','Tampilkan nama ikon')+chk('ad','Tombol + Tambah')+row('Ikon bawaan Google','<button class="fb" data-dreset="1">Pulihkan</button>')+row('Kosongkan desktop','<button class="fb" data-dclear="1">Kosongkan</button>');
+ if(tab==4)h=row('Nama pengguna','<input type="text" data-txt="un" maxlength="16" value="'+esc(S.un)+'">')+chk('rc','Tampilkan rekomendasi')+row('Hapus riwayat rekomendasi','<button class="fb" data-rclr="1">Hapus</button>')+row('Lepas semua sematan','<button class="fb" data-pclr="1">Lepas</button>');
+ if(tab==5)h='<p class="nb">FINZ Desktop UI v1.1<br>Pengaturan tersimpan otomatis.</p>'+row('Pengaturan Android','<button class="fb" data-and="1">Buka</button>')+row('Reset semua pengaturan','<button class="fb" data-reset="1">Reset</button>');
  $('#fc').innerHTML=h;
 }
-function openFs(){$('#st').className='';$('#pm').className='';closePick();closeTv();$('#fs').className='on';view();draw()}
-function closeFs(){$('#fs').className='';draw()}
+function openFs(){$('#st').className='';$('#pm').className='';closePick();closeTv();$('#fs').className='on';$('#gb').classList.add('on');view();draw()}
+function closeFs(){$('#fs').className='';$('#gb').classList.remove('on');draw()}
 function fsClick(e){
  var d=e.target.closest('button');if(!d)return;
  if(d.hasAttribute('data-fx'))closeFs();
@@ -280,9 +296,20 @@ function fsClick(e){
  else if(d.hasAttribute('data-pick'))$('#ff').click();
  else if(d.hasAttribute('data-wdef')){S.wk='def';save();setWall();applyS()}
  else if(d.hasAttribute('data-th')){S.th=+d.dataset.th;save();applyS();view()}
+ else if(d.hasAttribute('data-dreset')){desk=null;try{localStorage.removeItem('desk')}catch(x){}draw()}
+ else if(d.hasAttribute('data-dclear')){desk=[];wr('desk',desk);draw()}
+ else if(d.hasAttribute('data-rclr')){rec=[];wr('rec',rec);grid()}
+ else if(d.hasAttribute('data-pclr')){pins=[];wr('pins',pins);grid();draw()}
  else if(d.hasAttribute('data-reset')){S=Object.assign({},D);save();setWall();applyS();view()}
 }
-$('#fs').addEventListener('input',function(e){var t=e.target,k=t.dataset.k;if(!k)return;S[k]=+t.value;$('#fs [data-v="'+k+'"]').textContent=t.value;applyS();save()});
+$('#fs').addEventListener('input',function(e){
+ var t=e.target;
+ if(t.dataset.k){S[t.dataset.k]=+t.value;var l=$('#fs [data-v="'+t.dataset.k+'"]');if(l)l.textContent=t.value}
+ else if(t.dataset.txt)S[t.dataset.txt]=t.value;
+ else if(t.dataset.col){S[t.dataset.col]=t.value;S.th=-1}
+ else return;
+ applyS();save();
+});
 $('#fs').addEventListener('change',function(e){
  var t=e.target;
  if(t.dataset.c){S[t.dataset.c]=t.checked?1:0;applyS();save()}
@@ -299,7 +326,7 @@ document.addEventListener('click',function(e){
  if(lp){lp=false;return}
  if(e.target.closest('[data-and]')){if(window.Android)Android.launch('com.android.settings');return}
  if(e.target.closest('#fs')){fsClick(e);return}
- if(e.target.closest('#sx,[data-set]')){openFs();return}
+ if(e.target.closest('#sx,#gb')){if($('#fs').className)closeFs();else openFs();return}
  if($('#fs').className){closeFs();return}
  var cx=e.target.closest('[data-x]');
  if(cx){closeWin(cx.getAttribute('data-x'));return}
@@ -321,8 +348,8 @@ document.addEventListener('click',function(e){
 });
 $('#q').addEventListener('input',grid);
 $('#aq').addEventListener('input',pick);
-$('#sx').innerHTML=gear();
-applyS();setWall();draw();grid();clock();setInterval(clock,15000);
+$('#sx').innerHTML=gear();$('#gb').innerHTML=gear();
+applyS();setWall();draw();grid();clock();setInterval(clock,1000);
 </script>
 </body>
- </html>
+                                                                                                                                                                                                                                                                                                                                                                        </html>
