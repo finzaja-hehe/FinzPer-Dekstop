@@ -10,10 +10,10 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,22 +23,10 @@ import java.util.HashMap;
 
 public class MainActivity extends Activity {
 
-    // Ganti kalau desain barumu bernama lain, misalnya "index3.html"
-    private static final String PAGE = "index.html";
+    private static final String PAGE = "windows.html";
 
     private WebView web;
     private final HashMap<String, String> ICONS = new HashMap<>();
-
-    private static final String JS =
-        "try{"
-        + "window.icon=function(n){if(!window.Android)return '';"
-        + "if(!R){try{R=JSON.parse(Android.apps()).sort(function(a,b){return a.n.localeCompare(b.n)})}catch(e){R=[]}}"
-        + "for(var k=0;k<R.length;k++)if(R[k].n===n&&R[k].i)return R[k].i;return ''};"
-        + "var _t=window.tile;"
-        + "window.tile=function(n){var s=icon(n);if(!s)return _t?_t(n):'';"
-        + "return '<span class=\"ib\"><img alt=\"\" src=\"data:image/png;base64,'+s+'\" style=\"width:100%;height:100%;border-radius:10px\"></span>'};"
-        + "draw();grid();"
-        + "}catch(e){}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +34,15 @@ public class MainActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         web = new WebView(this);
         web.setBackgroundColor(0xFF06142E);
+        web.setOverScrollMode(View.OVER_SCROLL_NEVER);
         WebSettings s = web.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setSupportZoom(false);
+        s.setBuiltInZoomControls(false);
+        s.setDisplayZoomControls(false);
+        s.setTextZoom(100);
         web.addJavascriptInterface(new Bridge(), "Android");
-        web.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                view.evaluateJavascript(JS, null);
-            }
-        });
         setContentView(web);
         web.loadUrl("file:///android_asset/" + PAGE);
     }
@@ -118,4 +105,4 @@ public class MainActivity extends Activity {
             }
         }
     }
-}
+                        }
