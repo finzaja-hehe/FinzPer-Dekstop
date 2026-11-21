@@ -273,82 +273,147 @@ button{font:inherit;color:inherit;cursor:pointer}
 #wl{display:block}
 #wl svg{width:100%;height:100%;margin:0}
 .an #wl svg{animation:pu 4s ease-in-out infinite}
+
+/* HyperDesk – tambahan tampilan Windows 11 (tempel setelah <style> utama) */
+.w11 #st{width:min(94vw,600px);border-radius:8px;padding:16px 18px 0;gap:10px 14px;background:var(--sf);backdrop-filter:blur(40px) saturate(1.6);-webkit-backdrop-filter:blur(40px) saturate(1.6)}
+.w11 #st .sh span{font-size:13px;font-weight:600}
+.w11 #ma{border-radius:4px;font-size:11px}
+.w11 #q,.w11 #aq{height:36px;border-radius:18px}
+.w11 .sf{margin:0 -18px;padding:10px 18px;background:rgba(0,0,0,.18)}
+.w11 .av{width:28px;height:28px;font-size:13px}
+.w11 .wn{border-radius:8px}
+.w11 .wh{height:32px}
+.w11 .wh button{width:46px;height:32px}
+.w11 .wh .wxb:hover,.w11 .wh .wxb:active{background:#c42b1c;color:#fff}
+/* kotak cari di taskbar */
+#tsb{display:flex;align-items:center;gap:8px;height:32px;min-width:150px;margin-left:4px;padding:0 12px;border-radius:16px;border:1px solid rgba(255,255,255,.1);border-bottom-color:rgba(255,255,255,.3);background:rgba(255,255,255,.07);font-size:12px;color:var(--mu)}
+#tsb:active{background:rgba(255,255,255,.12)}
+#tsb svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media (max-width:640px){#tsb{min-width:0;width:34px;padding:0;justify-content:center}#tsb span{display:none}}
+/* kalender & tombol daya */
+#cal,#pw{position:absolute;z-index:58;display:none;background:var(--sf);border:1px solid rgba(255,255,255,.1);border-radius:8px;box-shadow:0 10px 36px rgba(0,0,0,.55);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
+#cal.on,#pw.on{display:block}
+#cal{right:6px;bottom:54px;width:min(300px,calc(100% - 12px));padding:14px}
+#cal .ct{font-size:34px;font-weight:300;line-height:1}
+#cal .cd2{font-size:12px;color:var(--mu);margin:4px 0 12px}
+#cal .ch{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px}
+#cal .ch button{width:30px;height:28px;border:0;border-radius:4px;background:none}
+#cal .ch button:active{background:var(--c2)}
+#cal .cg{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:11px;gap:2px}
+#cal .cg i{font-style:normal;color:var(--mu);padding:4px 0}
+#cal .cg b{font-weight:400;padding:6px 0;border-radius:50%}
+#cal .cg b.o{color:#777}
+#cal .cg b.t{background:var(--f1);color:#000;font-weight:600}
+#pw{left:auto;right:14px;bottom:52px;min-width:150px;padding:4px;z-index:70}
+#pw button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 10px;border-radius:5px;font-size:12px}
+#pw button:active{background:var(--c2)}
+#pwb{width:30px;height:30px;border:0;border-radius:4px;background:none;display:flex;align-items:center;justify-content:center}
+#pwb:active{background:var(--c2)}
+#pwb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+/* layar kunci */
+#lk{position:absolute;inset:0;z-index:99;display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:18%;background:radial-gradient(60% 50% at 50% 40%,rgba(96,205,255,.25),transparent 70%),#05030f;backdrop-filter:blur(30px);transition:transform .35s ease,opacity .35s ease}
+#lk.on{display:flex}
+#lk.up{transform:translateY(-100%);opacity:0}
+#lk .lt{font-size:min(22vw,96px);font-weight:300;line-height:1}
+#lk .ld{font-size:16px;margin-top:6px}
+#lk .lh{position:absolute;bottom:8%;font-size:12px;color:var(--mu)}
+#lk.off{background:#000;justify-content:center;padding:0}
+@media (prefers-reduced-motion:reduce){#lk{transition:none}}
+
+#wb.d,.w11 #wb.d{background:#02010a}
+/* pengaturan tambahan */
+#fs select{height:26px;border-radius:5px;border:1px solid var(--g1);background:#26262a;color:#fff;font:inherit;font-size:12px;padding:0 6px;max-width:140px}
+.sl #st,.sl #pm{left:6px;transform:none}
+.nab *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.sq #st,.sq #ps,.sq #tv,.sq #fs,.sq #pm,.sq #cm,.sq #qs,.sq #cal,.sq #pw,.sq .wn,.sq .tn,.sq .tw,.sq .sb,.sq .fb{border-radius:0!important}
+.sq #q,.sq #aq,.sq #tsb{border-radius:2px!important}
+
+/* ===== Wallpaper FINZ dibuat murni dengan CSS (tanpa file gambar) ===== */
+.zst{position:absolute;left:50%;top:50%;width:100em;height:56.25em;transform:translate(-50%,-50%);font-size:max(1vw,1.7778vh);overflow:hidden;
+background:radial-gradient(34% 38% at 12% 80%,rgba(170,60,255,.5),transparent 70%),radial-gradient(40% 45% at 88% 62%,rgba(40,110,255,.5),transparent 70%),radial-gradient(45% 40% at 70% 22%,rgba(70,60,230,.35),transparent 70%),linear-gradient(180deg,#010008 0,#03010f 45%,#07033a 74.8%,#120870 75%,#0a0450 86%,#02010c 100%)}
+.fit .zst{font-size:min(1vw,1.7778vh)}
+.zst::after{content:"";position:absolute;left:0;right:0;top:74.9%;height:.12em;background:linear-gradient(90deg,transparent,#b04bff 15%,#4a7bff 60%,#3ab4ff 90%,transparent);box-shadow:0 0 .8em .15em rgba(100,120,255,.65)}
+.zfl{position:absolute;left:0;right:0;top:75%;bottom:0;background:linear-gradient(90deg,rgba(170,60,255,.35),transparent 40%,transparent 60%,rgba(50,110,255,.4)),repeating-linear-gradient(90deg,transparent 0 6em,rgba(120,120,255,.07) 6em 6.3em)}
+.zar{position:absolute;inset:0}
+.zrf{transform:translateY(84.34em) scaleY(-1);opacity:.5;filter:blur(.1em);-webkit-mask-image:linear-gradient(180deg,transparent 30%,#000 72%);mask-image:linear-gradient(180deg,transparent 30%,#000 72%)}
+#sp{display:flex;align-items:center;gap:2px}
+.zar i,.zar b,.zar span{position:absolute;display:block;font-style:normal}
+.zsw{border:.18em solid;border-radius:50%;box-shadow:0 0 1.2em rgba(90,110,255,.55),inset 0 0 1.5em rgba(120,80,255,.35)}
+.z1{left:49em;top:1em;width:50em;height:27em;transform:rotate(-12deg);border-color:#7a5bff #3a9cff #3a6cff transparent}
+.z2{left:55em;top:7em;width:38em;height:20em;transform:rotate(-10deg);border-color:#9a4bff transparent #3a9cff #4a7bff;opacity:.8}
+.z3{left:-12em;top:36em;width:62em;height:14em;transform:rotate(-5deg);border-color:#c04bff #8a4bff transparent #c04bff}
+.z4{left:56em;top:37em;width:56em;height:11em;transform:rotate(-3deg);border-color:#4a7bff #3ab4ff transparent #5a6bff}
+.zrg{left:12.7em;top:22.1em;width:28.5em;height:5.7em;border:.2em solid;border-radius:50%;border-color:#c04bff #7a5bff transparent #c04bff;transform:rotate(-10deg);box-shadow:0 0 .8em rgba(190,90,255,.6)}
+.zgl{inset:0;filter:drop-shadow(0 0 .7em rgba(170,110,255,.8)) drop-shadow(0 0 .1em #fff)}
+.zF{left:21em;top:17.46em;width:22.5em;height:17.6em;background:linear-gradient(135deg,#e29bff,#8a5cff 50%,#45b0ff);clip-path:polygon(2.7% 10.2%,100% 0,90.4% 19.7%,55.3% 21.8%,50% 34%,73.4% 32.7%,65.4% 49%,42.6% 51%,33.5% 74.1%,2.1% 100%,10.6% 54.8%,0 47.6%,12.2% 42.9%,5.3% 32%,15.4% 27.2%)}
+.ztx{left:38.3%;top:40.4%;font:italic 900 7.2em/1 "Segoe UI Variable","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:.06em;white-space:nowrap;background:linear-gradient(180deg,#fff,#c3b2ff 55%,#6fa9ff);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:.02em rgba(255,255,255,.5);filter:drop-shadow(0 0 .35em rgba(150,120,255,.7))}
+.zsb{left:41.3%;top:52.8%;font:800 1.9em/1 "Segoe UI Variable","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:.35em;white-space:nowrap;background:linear-gradient(90deg,#c04bff,#7a5bff,#2f9cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.zln{top:30.8em;width:6.8em;height:.12em;background:linear-gradient(90deg,#c04bff,#2f9cff);border-radius:1em}
+.zwg{left:74.2em;top:18.1em;width:16.3em;height:16em;filter:drop-shadow(0 0 .9em rgba(80,140,255,.8))}
+.zwg i{inset:0}
+.zp1{background:linear-gradient(135deg,rgba(190,100,255,.85),rgba(91,108,255,.7));clip-path:polygon(0 18.7%,40.4% 11.9%,40.4% 47.8%,0 50%)}
+.zp2{background:linear-gradient(135deg,rgba(90,140,255,.8),rgba(58,180,255,.65));clip-path:polygon(45.6% 10.4%,98.5% 0,100% 45.5%,45.6% 48.1%)}
+.zp3{background:linear-gradient(135deg,rgba(180,92,255,.8),rgba(91,108,255,.65));clip-path:polygon(0 56%,40.4% 53.7%,40.4% 91.8%,0 88.1%)}
+.zp4{background:linear-gradient(135deg,rgba(90,140,255,.75),rgba(58,180,255,.6));clip-path:polygon(45.6% 52.6%,100% 50%,98.5% 100%,45.6% 92.5%)}
+
+/* ===== v1.3: preset wallpaper, widget, aplikasi baru ===== */
+#app[data-wp]:not([data-wp=finz]) .zst{display:none}
+#app[data-wp=aurora] #wb.d{background:radial-gradient(60% 45% at 25% 20%,rgba(16,185,129,.55),transparent 70%),radial-gradient(55% 45% at 80% 30%,rgba(59,130,246,.5),transparent 70%),radial-gradient(50% 40% at 50% 85%,rgba(168,85,247,.4),transparent 70%),#020812}
+#app[data-wp=senja] #wb.d{background:radial-gradient(70% 50% at 50% 105%,rgba(249,115,22,.75),transparent 70%),radial-gradient(50% 40% at 85% 20%,rgba(236,72,153,.5),transparent 70%),radial-gradient(45% 40% at 12% 30%,rgba(124,58,237,.45),transparent 70%),linear-gradient(180deg,#12061f,#3b0a2e)}
+#app[data-wp=hutan] #wb.d{background:radial-gradient(55% 45% at 30% 85%,rgba(16,185,129,.4),transparent 70%),radial-gradient(45% 40% at 80% 20%,rgba(6,182,212,.3),transparent 70%),#010a08}
+#app[data-wp=polos] #wb.d{background:#000}
+@keyframes wo{from{opacity:0;transform:scale(.96)}}
+.wn{animation:wo .16s ease-out}
+.nwa .wn{animation:none}
+@media (prefers-reduced-motion:reduce){.wn{animation:none}}
+.nts #tsb{display:none}
+#nt{position:absolute;inset:0;z-index:98;pointer-events:none;background:#ff8c1a;mix-blend-mode:multiply;opacity:0}
+#dcl{position:absolute;right:18px;top:14px;z-index:0;display:none;pointer-events:none;text-align:right;text-shadow:0 2px 14px rgba(0,0,0,.65)}
+#dcl b{display:block;font-size:54px;font-weight:300;line-height:1}
+#dcl span{font-size:14px}
+.wc canvas{flex:1;min-height:0;width:100%;background:#fff;touch-action:none}
+.kd{font-size:40px;font-weight:300;text-align:center;padding:14px 0 6px;font-variant-numeric:tabular-nums}
+.kb{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:4px 8px}
+.td{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--ln);font-size:13px}
+.td span{flex:1;min-width:0;word-break:break-word}
+.td.dn span{text-decoration:line-through;color:var(--mu)}
+.td button{border:0;background:none;font-size:16px;width:28px;height:28px;border-radius:4px}
+.td button:active{background:var(--c2)}
+.inf{flex:1;overflow:auto;padding:10px 14px;font-size:12px;user-select:text;-webkit-user-select:text}
+.inf div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--ln)}
+.inf div span:first-child{color:var(--mu)}
+
+/* ===== v1.4: variabel pengaturan baru ===== */
+#app #st,#app #ps,#app #tv,#app #fs,#app #pm,#app #cm,#app #qs,#app #cal,#app #pw,#app .wn{border-radius:var(--rad,8px)}
+#app #st{width:min(94vw,var(--sw,600px))}
+#app #sg,#app #pg{grid-template-columns:repeat(auto-fill,minmax(var(--pc,68px),1fr))}
+#app .ap .ib{width:var(--ps,32px);height:var(--ps,32px)}
+#app .wh{height:var(--wht,32px)}
+#app .wh button{height:var(--wht,32px)}
+.wn:not(.fc){opacity:var(--wio,1)}
+#app.w11 .tn{width:var(--tw,42px)}
+#app #tc{gap:var(--tg,2px)}
+#dk{gap:var(--dg,0px)}
+.bld{font-weight:600}
+.hc{--ln:rgba(255,255,255,.4)}
+.hc .wn,.hc #st,.hc #fs{border-color:#fff!important}
+.rm *{animation:none!important;transition:none!important}
+.nsh .wn{box-shadow:none!important}
+.nup #st .av,.nup #un{display:none}
+.ntv #tc>.tn:nth-child(3){display:none}
+.nse #tc>.tn:nth-child(2){display:none}
+.nsd #sd{display:none}
+#fs input[type=password]{width:130px;height:26px;box-sizing:border-box;border-radius:5px;border:1px solid var(--g1);background:rgba(255,255,255,.07);color:#fff;padding:0 8px;font:inherit;font-size:12px}
+#lp{display:none;margin-top:22px;text-align:center}
+#lp .pd{font-size:18px;letter-spacing:.3em;height:28px}
+#lp .pk{display:grid;grid-template-columns:repeat(3,56px);gap:8px;margin-top:8px}
+#lp button{height:44px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);font-size:17px}
+#lp button:active{background:rgba(255,255,255,.2)}
 </style>
 </head>
 <body>
 <div id="app">
-<div id="wp"><div id="wm"><div id="wb" class="d"></div></div><div id="wl"><svg viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs>
-<linearGradient id="fzBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02010a"/><stop offset=".5" stop-color="#05031a"/><stop offset="1" stop-color="#0a0634"/></linearGradient>
-<radialGradient id="fzGL" cx=".2" cy=".6" r=".5"><stop offset="0" stop-color="#8a2cff" stop-opacity=".4"/><stop offset="1" stop-color="#8a2cff" stop-opacity="0"/></radialGradient>
-<radialGradient id="fzGR" cx=".78" cy=".42" r=".45"><stop offset="0" stop-color="#2f6bff" stop-opacity=".38"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></radialGradient>
-<radialGradient id="fzVg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient>
-<linearGradient id="fzPB" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1672" y2="0"><stop offset="0" stop-color="#c04bff"/><stop offset=".45" stop-color="#7a5bff"/><stop offset="1" stop-color="#2f9cff"/></linearGradient>
-<linearGradient id="fzFl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e29bff"/><stop offset=".5" stop-color="#8a5cff"/><stop offset="1" stop-color="#45b0ff"/></linearGradient>
-<linearGradient id="fzTx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#c3b2ff"/><stop offset="1" stop-color="#6fa9ff"/></linearGradient>
-<linearGradient id="fzWL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b45cff" stop-opacity=".75"/><stop offset="1" stop-color="#5b6cff" stop-opacity=".65"/></linearGradient>
-<linearGradient id="fzWR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a8cff" stop-opacity=".7"/><stop offset="1" stop-color="#3ab4ff" stop-opacity=".6"/></linearGradient>
-<linearGradient id="fzFlr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0640"/><stop offset="1" stop-color="#02010c"/></linearGradient>
-<linearGradient id="fzHz" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1672" y2="0"><stop offset="0" stop-color="#b04bff" stop-opacity="0"/><stop offset=".15" stop-color="#b04bff"/><stop offset=".6" stop-color="#4a7bff"/><stop offset=".9" stop-color="#3ab4ff"/><stop offset="1" stop-color="#3ab4ff" stop-opacity="0"/></linearGradient>
-<linearGradient id="fzFd" gradientUnits="userSpaceOnUse" x1="0" y1="705" x2="0" y2="941"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
-<linearGradient id="fzSt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-<filter id="fzGlow" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="fzSoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
-<filter id="fzBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
-<filter id="fzTiny"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<mask id="fzMk"><rect x="0" y="705" width="1672" height="236" fill="url(#fzFd)"/></mask>
-<g id="fzArt">
-<g filter="url(#fzGlow)">
-<ellipse cx="450" cy="418" rx="238" ry="48" transform="rotate(-10 450 418)" fill="none" stroke="url(#fzPB)" stroke-width="3" stroke-dasharray="560 220" stroke-linecap="round"/>
-<polygon points="362,322 728,292 692,350 560,356 540,392 628,388 598,436 512,442 478,510 360,586 392,452 352,432 398,418 372,386 410,372" fill="url(#fzFl)" stroke="#fff" stroke-opacity=".85" stroke-width="2.5" stroke-linejoin="round"/>
-<polygon points="374,326 720,298 692,338 424,352" fill="#fff" fill-opacity=".28"/>
-<polygon points="412,374 548,358 522,440 474,504" fill="#fff" fill-opacity=".14"/>
-<polygon points="552,392 626,390 604,430 530,436" fill="#fff" fill-opacity=".22"/>
-<text x="640" y="482" font-size="120" font-weight="900" font-style="italic" textLength="456" lengthAdjust="spacingAndGlyphs" fill="url(#fzTx)" stroke="#fff" stroke-opacity=".55" stroke-width="1.5" font-family="'Segoe UI Variable','Segoe UI',Roboto,Arial,sans-serif">FINZ</text>
-<text x="690" y="527" font-size="32" font-weight="800" textLength="336" lengthAdjust="spacing" fill="url(#fzPB)" font-family="'Segoe UI Variable','Segoe UI',Roboto,Arial,sans-serif">DESKTOP UI</text>
-<path d="M548 515H662M1050 515H1164" stroke="url(#fzPB)" stroke-width="2" stroke-linecap="round"/>
-<g stroke="#cfe6ff" stroke-width="2.5" stroke-linejoin="round" stroke-opacity=".9">
-<polygon points="1240,352 1350,334 1350,430 1240,436" fill="url(#fzWL)"/>
-<polygon points="1364,330 1508,302 1512,424 1364,431" fill="url(#fzWR)"/>
-<polygon points="1240,452 1350,446 1350,548 1240,538" fill="url(#fzWL)"/>
-<polygon points="1364,443 1512,436 1508,570 1364,550" fill="url(#fzWR)"/>
-</g>
-</g>
-</g>
-</defs>
-<rect width="1672" height="941" fill="url(#fzBg)"/>
-<rect width="1672" height="941" fill="url(#fzGL)"/>
-<rect width="1672" height="941" fill="url(#fzGR)"/>
-<g fill="none" stroke="url(#fzPB)" stroke-linecap="round">
-<g filter="url(#fzSoft)" stroke-width="46" opacity=".16">
-<path d="M700 470C820 300 1000 120 1220 60C1420 10 1600 90 1620 250C1635 360 1560 450 1450 520"/>
-<path d="M600 560C760 330 960 110 1250 30C1450-20 1650 60 1672 200"/>
-</g>
-<g filter="url(#fzTiny)" stroke-width="2" opacity=".85">
-<path d="M700 470C820 300 1000 120 1220 60C1420 10 1600 90 1620 250C1635 360 1560 450 1450 520"/>
-<path d="M760 520C880 360 1040 200 1240 140C1400 100 1540 150 1560 280C1570 380 1500 470 1400 560"/>
-<path d="M900 560C1000 420 1100 300 1260 250C1380 215 1470 260 1460 340" opacity=".8"/>
-<path d="M600 560C760 330 960 110 1250 30C1450-20 1650 60 1672 200" opacity=".7"/>
-<path d="M640 600C780 420 940 260 1160 190" opacity=".5"/>
-</g>
-</g>
-<path d="M0 440C180 440 360 520 520 620C620 680 700 700 760 705L0 705Z" fill="#8a2cff" fill-opacity=".2"/>
-<path d="M900 705C1050 600 1200 560 1380 600C1520 630 1600 600 1672 520L1672 705Z" fill="#2f6bff" fill-opacity=".22"/>
-<g fill="none" stroke="url(#fzPB)" stroke-linecap="round" filter="url(#fzTiny)">
-<path d="M-20 450C200 430 420 520 600 610C760 690 980 650 1180 590C1350 540 1520 560 1700 620" stroke-width="2.2" opacity=".9"/>
-<path d="M-20 520C220 520 430 600 620 660C780 700 1000 640 1150 580" stroke-width="1.8" opacity=".7"/>
-<path d="M0 445C180 445 360 525 520 622" stroke-width="2.5" opacity=".9"/>
-<path d="M900 705C1050 600 1200 560 1380 600C1520 630 1600 600 1672 520" stroke-width="2" opacity=".85"/>
-</g>
-<use href="#fzArt"/>
-<rect y="705" width="1672" height="236" fill="url(#fzFlr)"/>
-<ellipse cx="470" cy="800" rx="420" ry="90" fill="#9a3cff" opacity=".3" filter="url(#fzSoft)"/>
-<ellipse cx="1380" cy="800" rx="380" ry="90" fill="#2f7bff" opacity=".3" filter="url(#fzSoft)"/>
-<g mask="url(#fzMk)"><g opacity=".5" filter="url(#fzBlur)"><use href="#fzArt" transform="translate(0 1410) scale(1 -1)"/></g></g>
-<g filter="url(#fzSoft)" opacity=".6"><rect x="340" y="705" width="150" height="236" fill="url(#fzSt)" transform="skewX(-8)" style="fill:#b04bff;opacity:.35"/><rect x="1250" y="705" width="250" height="236" style="fill:#3a8cff;opacity:.4"/></g>
-<rect y="702" width="1672" height="3.5" fill="url(#fzHz)" filter="url(#fzTiny)"/>
-<rect width="1672" height="941" fill="url(#fzVg)"/>
-</svg></div>
+<div id="wp"><div id="wm"><div id="wb" class="d"></div></div><div id="wl"><div class="zst" aria-hidden="true"><div class="zfl"></div><div class="zar"><i class="zsw z1"></i><i class="zsw z2"></i><i class="zsw z3"></i><i class="zsw z4"></i><i class="zrg"></i><span class="zgl"><i class="zF"></i></span><b class="ztx">FINZ</b><b class="zsb">DESKTOP UI</b><i class="zln" style="left:32.8em"></i><i class="zln" style="left:62.8em"></i><span class="zwg"><i class="zp1"></i><i class="zp2"></i><i class="zp3"></i><i class="zp4"></i></span></div></div></div>
 <div id="wd"></div></div>
 <div id="dk"></div>
 <div id="wz"></div>
@@ -369,7 +434,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 </section>
 <section id="pm" aria-label="Menu aplikasi"><div id="pt"></div><button class="pb" id="pk" data-a="desk"></button><button class="pb" id="pa" data-a="pin"></button><button class="pb" id="pf" data-a="float">Buka mengambang (Android)</button><button class="pb" id="pc" data-a="close">Tutup jendela</button><button class="pb" data-a="no">Batal</button></section>
 <section id="fs" aria-label="Pengaturan desktop"><div id="fn"></div><div id="fc"></div><input id="ff" type="file" accept="image/*,video/*" hidden></section>
-<nav id="tb"><div id="sp"><button class="tn" id="gb" aria-label="Pengaturan desktop"></button></div><div id="tc"></div><div id="ty"><div id="sy"><button class="sb" id="iw" data-sys="wifi" aria-label="Wi-Fi"></button><button class="sb" id="im" data-sys="data" aria-label="Data seluler"></button><button class="sb" id="ia" data-sys="bat" aria-label="Baterai"></button></div><div id="cl"></div></div></nav>
+<div id="nt"></div><div id="dcl"></div><nav id="tb"><div id="sp"><button class="tn" id="gb" aria-label="Pengaturan desktop"></button></div><div id="tc"></div><div id="ty"><div id="sy"><button class="sb" id="iw" data-sys="wifi" aria-label="Wi-Fi"></button><button class="sb" id="im" data-sys="data" aria-label="Data seluler"></button><button class="sb" id="ia" data-sys="bat" aria-label="Baterai"></button></div><div id="cl"></div></div></nav>
 </div>
 <script>
 /* HyperDesk – logika desktop (tanpa wallpaper base64, jadi file tetap kecil) */
@@ -398,20 +463,27 @@ var SM='<svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg>',
 
 /* ---------- pengaturan tersimpan ---------- */
 var ACC=[['#60cdff','#0067c0','rgba(96,205,255,.35)','rgba(0,103,192,.35)'],['#a855f7','#3b82f6','rgba(168,85,247,.45)','rgba(59,130,246,.45)'],['#ec4899','#f97316','rgba(236,72,153,.45)','rgba(249,115,22,.45)'],['#10b981','#06b6d4','rgba(16,185,129,.45)','rgba(6,182,212,.45)'],['#ef4444','#f59e0b','rgba(239,68,68,.45)','rgba(245,158,11,.45)'],['#60cdff','#2563eb','rgba(96,205,255,.45)','rgba(37,99,235,.45)']];
-var DEF={desk:['b:note','b:calc','b:web','b:term'],pins:['b:note','b:calc','b:web','b:term'],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:0,ac:0,w11:1,an:0,un:'HyperDesk'};
+var DEF={desk:['b:note','b:calc','b:web','b:term','b:paint','b:clk','b:todo','b:info'],pins:['b:note','b:calc','b:web','b:term','b:paint','b:clk','b:todo','b:info'],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:0,ac:0,w11:1,an:0,tbh:48,wps:'cover',wbl:0,h12:0,sec:0,dt:1,sl:0,sq:0,ab:1,sfo:.86,wpp:'finz',cc:'',br:1,nt:0,dcl:0,wa:1,ts:1,rad:8,wht:32,wio:1,pc:68,ps:32,sw:600,tw:42,tg:2,dg:0,ff:'seg',bld:0,hc:0,rm:0,shd:1,up:1,kb:1,tvb:1,sbt:1,sdt:1,wmx:0,wsz:1,dcm:1,par:1,wrot:0,wiv:'15',wsa:1,whu:0,pin:'',alk:'0',aw:'0',dfm:'dmy',trc:1,un:'HyperDesk'};
 var dflt=function(){return JSON.parse(JSON.stringify(DEF))};
 var S=Object.assign(dflt(),LS.g('s',{}));
 function save(){LS.s('s',S)}
+var FF={seg:'',ser:'Georgia,"Times New Roman",serif',mono:'"Cascadia Mono",Consolas,monospace',rnd:'"Trebuchet MS","Segoe UI",sans-serif'};
 function ap(){
  var R=document.documentElement.style,a=$('app').classList,c=ACC[S.ac]||ACC[0],w=$('wp').style;
  R.setProperty('--is',S.is);R.setProperty('--tbo',S.tbo);R.setProperty('--f1',c[0]);R.setProperty('--f2',c[1]);R.setProperty('--g1',c[2]);R.setProperty('--g2',c[3]);
  w.setProperty('--g1',c[2]);w.setProperty('--g2',c[3]);
  a.toggle('w11',!!S.w11);a.toggle('nl',!S.lab);a.toggle('na',!S.add);a.toggle('tl',!!S.tl);a.toggle('hs',!S.st);
  a.toggle('nbp',!S.bp);a.toggle('nr',!S.rc);a.toggle('fit',!!S.fit);a.toggle('an',!!S.an);
+ var q=$('app').style;q.setProperty('--tbh',S.tbh+'px');q.setProperty('--sf','rgba(38,38,42,'+S.sfo+')');q.setProperty('--wps',S.wps);
+ $('wm').style.filter='blur('+S.wbl+'px) saturate('+S.wsa+') hue-rotate('+S.whu+'deg)';a.toggle('fit',!!S.fit||S.wps==='contain');a.toggle('sl',!!S.sl);a.toggle('sq',!!S.sq);a.toggle('nab',!S.ab);a.toggle('nts',!S.ts);a.toggle('nwa',!S.wa);$('app').dataset.wp=S.wpp;q.filter=S.br===1?'':'brightness('+S.br+')';$('nt').style.opacity=S.nt;
+ if(S.cc){R.setProperty('--f1',S.cc);R.setProperty('--f2',S.cc);R.setProperty('--g1',S.cc+'59');R.setProperty('--g2',S.cc+'59')}
+ q.setProperty('--rad',S.rad+'px');q.setProperty('--wht',S.wht+'px');q.setProperty('--wio',S.wio);q.setProperty('--pc',S.pc+'px');q.setProperty('--ps',S.ps+'px');q.setProperty('--sw',S.sw+'px');q.setProperty('--tw',S.tw+'px');q.setProperty('--tg',S.tg+'px');q.setProperty('--dg',S.dg+'px');q.fontFamily=FF[S.ff]||'';
+ a.toggle('bld',!!S.bld);a.toggle('hc',!!S.hc);a.toggle('rm',!!S.rm);a.toggle('nsh',!S.shd);a.toggle('nup',!S.up);a.toggle('nkb',!S.kb);a.toggle('ntv',!S.tvb);a.toggle('nse',!S.sbt);a.toggle('nsd',!S.sdt);
+ clock();
  $('wd').style.opacity=S.dim;$('un').textContent=S.un;$('av').textContent=S.un.charAt(0).toUpperCase()}
 
 /* ---------- daftar aplikasi ---------- */
-var BUILT=[{n:'Catatan',p:'b:note',c:'#f59e0b',l:'C'},{n:'Kalkulator',p:'b:calc',c:'#10b981',l:'='},{n:'Browser',p:'b:web',c:'#3b82f6',l:'W'},{n:'Terminal',p:'b:term',c:'#475569',l:'>_'}];
+var BUILT=[{n:'Catatan',p:'b:note',c:'#f59e0b',l:'C'},{n:'Kalkulator',p:'b:calc',c:'#10b981',l:'='},{n:'Browser',p:'b:web',c:'#3b82f6',l:'W'},{n:'Terminal',p:'b:term',c:'#475569',l:'>_'},{n:'Paint',p:'b:paint',c:'#ec4899',l:'P'},{n:'Jam',p:'b:clk',c:'#8b5cf6',l:'J'},{n:'Tugas',p:'b:todo',c:'#06b6d4',l:'✓'},{n:'Info PC',p:'b:info',c:'#64748b',l:'i'}];
 var apps=BUILT.slice();
 function by(p){for(var i=0;i<apps.length;i++)if(apps[i].p===p)return apps[i]}
 function load(){
@@ -446,7 +518,7 @@ function show(id){
  bS.classList.toggle('on',id==='st');bV.classList.toggle('on',id==='tv')}
 function openApp(a){
  show(null);
- S.rec=[a.p].concat(S.rec.filter(function(p){return p!==a.p})).slice(0,8);save();
+ if(S.trc)S.rec=[a.p].concat(S.rec.filter(function(p){return p!==a.p})).slice(0,8);save();
  if(a.p.indexOf('b:')===0)win(a);else if(A){try{A.launch(a.p)}catch(e){}}}
 function rStart(){
  var q=$('q').value.trim().toLowerCase(),L;
@@ -498,7 +570,7 @@ function showCm(x,y){
  cm.style.top=Math.max(4,Math.min(y-r.top,r.height-cm.offsetHeight-44))+'px'}
 press($('dk'),null,showCm,true);
 document.addEventListener('pointerdown',function(e){if(!e.target.closest('#st,#ps,#tv,#pm,#fs,#cm,#tb'))show(null)});
-$('dk').onscroll=function(){$('wm').style.transform='translateX('+Math.max(-18,Math.min(18,-this.scrollLeft/8))+'px)'};
+$('dk').onscroll=function(){$('wm').style.transform='translateX('+(S.par?Math.max(-18,Math.min(18,-this.scrollLeft/8)):0)+'px)'};
 
 /* ---------- jendela mengambang (multi-jendela) ---------- */
 var W=[],zi=10,sq=0,foc=null;
@@ -538,18 +610,57 @@ var BODY={
    else if(c==='clear')o.textContent='';
    else if(c==='date')p(new Date().toLocaleString('id-ID'));
    else if(c==='echo')p(a.join(' '));
-   else if(c==='ver')p('HyperDesk 1.1');
+   else if(c==='ver')p('HyperDesk 1.4');
    else if(c==='apps')p(apps.map(function(x){return x.n}).join(', '));
    else if(c==='bat'){var s=stt();p(s?'Baterai '+s.bat+'%':'Tidak tersedia')}
    else if(c==='open'){var x=apps.filter(function(y){return (y.n||'').toLowerCase()===r})[0]||apps.filter(function(y){return (y.n||'').toLowerCase().indexOf(r)>-1})[0];if(x)openApp(x);else p('Aplikasi tidak ditemukan')}
    else p(c+': perintah tidak dikenal')}
   b.onclick=run;i.onkeydown=function(e){if(e.key==='Enter')run()};
   z.appendChild(i);z.appendChild(b);w.c.appendChild(o);w.c.appendChild(z)}};
-var SZ={note:[340,260],calc:[250,340],web:[440,320],term:[380,260]};
+
+var z2=function(n){return n<10?'0'+n:''+n};
+BODY.paint=function(w){
+ var bar=mk('div','wbr'),cv=mk('canvas'),g=cv.getContext('2d'),col='#60cdff',sz=4,dr=0,lx=0,ly=0,
+ c=mk('input'),s=mk('input'),er=mk('button','fb','Hapus'),cl=mk('button','fb','Bersih'),sv=mk('button','fb','Simpan');
+ cv.width=640;cv.height=420;g.fillStyle='#fff';g.fillRect(0,0,640,420);g.lineCap='round';g.lineJoin='round';
+ var sd=LS.g('paint',0);if(sd){var im=new Image();im.onload=function(){g.drawImage(im,0,0)};im.src=sd}
+ c.type='color';c.value=col;c.oninput=function(){col=c.value};s.type='range';s.min=1;s.max=30;s.value=sz;s.style.width='80px';s.oninput=function(){sz=+s.value};
+ er.onclick=function(){col='#ffffff'};cl.onclick=function(){g.fillStyle='#fff';g.fillRect(0,0,640,420)};sv.onclick=function(){LS.s('paint',cv.toDataURL('image/jpeg',.8));sv.textContent='Tersimpan'};
+ function pt(e){var r=cv.getBoundingClientRect();return [(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]}
+ cv.onpointerdown=function(e){dr=1;cv.setPointerCapture(e.pointerId);var a=pt(e);lx=a[0];ly=a[1];g.fillStyle=col;g.beginPath();g.arc(lx,ly,sz/2,0,7);g.fill()};
+ cv.onpointermove=function(e){if(!dr)return;var a=pt(e);g.strokeStyle=col;g.lineWidth=sz;g.beginPath();g.moveTo(lx,ly);g.lineTo(a[0],a[1]);g.stroke();lx=a[0];ly=a[1]};
+ cv.onpointerup=cv.onpointercancel=function(){dr=0;sv.textContent='Simpan'};
+ [c,s,er,cl,sv].forEach(function(x){bar.appendChild(x)});w.c.insertBefore(bar,w.c.firstChild);w.c.insertBefore(cv,bar.nextSibling)};
+BODY.clk=function(w){
+ var d=mk('div','kd','00:00.0'),b=mk('div','kb'),t0=0,el=0,run=0,iv,mode='sw',tl=0,
+ go=mk('button','fb','Mulai'),rs=mk('button','fb','Reset'),md=mk('button','fb','Mode: Stopwatch'),mi=mk('input','wu');
+ mi.type='number';mi.placeholder='Menit';mi.style.cssText='flex:none;width:70px;display:none';
+ function f(ms){ms=Math.max(0,ms);return z2(Math.floor(ms/60000))+':'+z2(Math.floor(ms/1000)%60)+'.'+Math.floor(ms%1000/100)}
+ function draw(){var n=Date.now(),e=el+(run?n-t0:0);if(mode==='sw')d.textContent=f(e);else{var r=tl-e;d.textContent=f(r);if(r<=0&&run){stop();d.textContent='Selesai!';try{navigator.vibrate&&navigator.vibrate(400)}catch(x){}}}}
+ function stop(){run=0;clearInterval(iv);go.textContent='Mulai'}
+ go.onclick=function(){if(run){el+=Date.now()-t0;stop();return}if(mode==='tm'&&!tl)tl=(+mi.value||1)*60000;t0=Date.now();run=1;go.textContent='Jeda';iv=setInterval(draw,100)};
+ rs.onclick=function(){stop();el=0;tl=0;d.textContent=mode==='sw'?'00:00.0':f((+mi.value||0)*60000)};
+ md.onclick=function(){stop();el=0;tl=0;mode=mode==='sw'?'tm':'sw';md.textContent='Mode: '+(mode==='sw'?'Stopwatch':'Timer');mi.style.display=mode==='tm'?'':'none';d.textContent='00:00.0'};
+ [go,rs,md,mi].forEach(function(x){b.appendChild(x)});w.c.appendChild(d);w.c.appendChild(b);
+ var ob=new MutationObserver(function(){if(!document.body.contains(w.e)){stop();ob.disconnect()}});ob.observe($('wz'),{childList:true})};
+BODY.todo=function(w){
+ var L=LS.g('todo',[]),bar=mk('div','wbr'),i=mk('input','wu'),ad=mk('button','fb','Tambah'),ls=mk('div','fx');
+ i.placeholder='Tugas baru…';
+ function draw(){ls.innerHTML='';if(!L.length)ls.appendChild(mk('div','nb','Belum ada tugas.'));
+  L.forEach(function(t,k){var r=mk('div','td'+(t.d?' dn':'')),c=mk('input'),s=mk('span'),x=mk('button',null,'×');c.type='checkbox';c.checked=!!t.d;s.textContent=t.t;
+   c.onchange=function(){t.d=c.checked;LS.s('todo',L);draw()};x.onclick=function(){L.splice(k,1);LS.s('todo',L);draw()};r.appendChild(c);r.appendChild(s);r.appendChild(x);ls.appendChild(r)})}
+ function add(){var v=i.value.trim();if(!v)return;L.unshift({t:v,d:0});i.value='';LS.s('todo',L);draw()}
+ ad.onclick=add;i.onkeydown=function(e){if(e.key==='Enter')add()};
+ bar.appendChild(i);bar.appendChild(ad);w.c.appendChild(bar);w.c.appendChild(ls);draw()};
+BODY.info=function(w){
+ var s=stt(),up=Math.round(performance.now()/60000),d=mk('div','inf'),
+ R=[['Nama perangkat',S.un],['Layar',screen.width+' × '+screen.height],['Jendela',innerWidth+' × '+innerHeight],['Inti CPU',navigator.hardwareConcurrency||'?'],['Memori (perkiraan)',navigator.deviceMemory?navigator.deviceMemory+' GB':'?'],['Baterai',s?s.bat+'%'+(s.chg?' (mengisi)':''):'Tidak tersedia'],['Aplikasi',apps.length],['Jendela terbuka',W.length],['Aktif sejak',up+' menit'],['Bahasa',navigator.language],['Versi','HyperDesk 1.4']];
+ R.forEach(function(r){var x=mk('div'),a=mk('span'),b=mk('span');a.textContent=r[0];b.textContent=r[1];x.appendChild(a);x.appendChild(b);d.appendChild(x)});w.c.appendChild(d)};
+var SZ={paint:[420,360],clk:[300,230],todo:[320,320],info:[330,330],note:[340,260],calc:[250,340],web:[440,320],term:[380,260]};
 function win(a){
  var z=$('wz'),k=a.p.slice(2),sz=SZ[k]||[360,260],n=W.filter(function(x){return x.a===a}).length,
  w={a:a,min:0,mx:0,t:a.n+(n?' '+(n+1):'')},e=mk('div','wn'),h=mk('div','wh'),c=mk('div','wc'),
- ww=Math.min(sz[0],z.clientWidth-8),hh=Math.min(sz[1],z.clientHeight-8),o=(W.length%6)*24;
+ ww=Math.min(sz[0]*S.wsz,z.clientWidth-8),hh=Math.min(sz[1]*S.wsz,z.clientHeight-8),o=(W.length%6)*24;
  e.style.width=ww+'px';e.style.height=hh+'px';
  e.style.left=Math.max(0,Math.min(6+o,z.clientWidth-ww))+'px';e.style.top=Math.max(0,Math.min(6+o,z.clientHeight-hh))+'px';
  var wi=mk('span','wi'),wt=mk('span','wt'),bm=mk('button',null,SM),bx=mk('button',null,SX),bc=mk('button','wxb',SC);
@@ -562,13 +673,13 @@ function win(a){
  e.addEventListener('pointerdown',function(){if(foc!==w)focus(w)},true);
  h.onpointerdown=function(ev){
   if(ev.target.closest('button'))return;
-  focus(w);var t=Date.now();if(t-(w.lt||0)<320){w.lt=0;tgl(w);return}w.lt=t;if(w.mx)return;
+  focus(w);var t=Date.now();if(S.dcm&&t-(w.lt||0)<320){w.lt=0;tgl(w);return}w.lt=t;if(w.mx)return;
   var sx=ev.clientX,sy=ev.clientY,L=e.offsetLeft,T=e.offsetTop;h.setPointerCapture(ev.pointerId);
   h.onpointermove=function(m){
    e.style.left=Math.max(70-e.offsetWidth,Math.min(z.clientWidth-70,L+m.clientX-sx))+'px';
    e.style.top=Math.max(0,Math.min(z.clientHeight-32,T+m.clientY-sy))+'px'};
   h.onpointerup=h.onpointercancel=function(){h.onpointermove=null}};
- z.appendChild(e);W.push(w);BODY[k](w);focus(w)}
+ z.appendChild(e);W.push(w);BODY[k](w);focus(w);if(S.wmx)tgl(w)}
 function sizer(w,d,ev,g){
  ev.preventDefault();focus(w);if(w.mx)return;
  var e=w.e,sx=ev.clientX,sy=ev.clientY,L=e.offsetLeft,T=e.offsetTop,Wd=e.offsetWidth,Hd=e.offsetHeight;g.setPointerCapture(ev.pointerId);
@@ -626,14 +737,18 @@ function tray(){
  $('iw').innerHTML=ic('wifi');$('iw').style.opacity=s.wifi?1:.4;
  $('im').innerHTML=ic('data');$('im').style.opacity=s.data?1:.4;
  $('ia').innerHTML=ic('bat')+'<span>'+b+'%'+(s.chg?'⚡':'')+'</span>';$('ia').classList.toggle('lo',b<=15&&!s.chg)}
+function fd(d){var P=function(n){return n<10?'0'+n:''+n};return S.dfm==='mdy'?P(d.getMonth()+1)+'/'+P(d.getDate())+'/'+d.getFullYear():S.dfm==='ymd'?d.getFullYear()+'-'+P(d.getMonth()+1)+'-'+P(d.getDate()):P(d.getDate())+'/'+P(d.getMonth()+1)+'/'+d.getFullYear()}
 function clock(){
  var d=new Date(),p=function(n){return (n<10?'0':'')+n};
- $('cl').innerHTML=p(d.getHours())+'.'+p(d.getMinutes())+'<br>'+p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()}
+ var H=d.getHours(),ap2='';if(S.h12){ap2=H<12?' AM':' PM';H=H%12||12}
+ var t=(S.h12?H:p(H))+'.'+p(d.getMinutes())+(S.sec?'.'+p(d.getSeconds()):'')+ap2;
+ $('cl').innerHTML=t+(S.dt?'<br>'+fd(d):'');
+ var dc=$('dcl');if(dc){dc.style.display=S.dcl?'block':'none';if(S.dcl)dc.innerHTML='<b>'+p(d.getHours())+'.'+p(d.getMinutes())+'</b><span>'+d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long'})+'</span>'}}
 
 /* ---------- wallpaper ---------- */
 function wall(){
  var b=$('wb'),v=$('wv'),u=LS.g('wp',0);if(v)v.remove();
- if(u){b.className='';b.style.cssText='background-image:url('+u+');background-size:cover;background-position:center';$('wl').style.display='none'}
+ if(u){b.className='';b.style.cssText='background-image:url('+u+');background-size:var(--wps,cover);background-repeat:no-repeat;background-position:center';$('wl').style.display='none'}
  else{b.className='d';b.style.cssText='';$('wl').style.display=''}}
 $('ff').onchange=function(){
  var f=this.files&&this.files[0];if(!f)return;this.value='';show(null);
@@ -648,7 +763,7 @@ $('ff').onchange=function(){
   im.src=u}};
 
 /* ---------- pengaturan desktop ---------- */
-var tab=0,T=[['Personalisasi',pPers],['Desktop',pDesk],['Taskbar',pTask],['Tentang',pAbout]];
+var tab=0,T=[['Personalisasi',pPers],['Tampilan',pDisp],['Desktop',pDesk],['Jendela',pWin],['Menu Mulai',pStart],['Taskbar',pTask],['Waktu',pTime],['Keamanan',pSec],['Sistem',pSys],['Tentang',pAbout]];
 function openFs(){rFs();show('fs')}
 function rFs(){
  var n=$('fn'),c=$('fc');n.innerHTML='';c.innerHTML='';
@@ -657,27 +772,174 @@ function rFs(){
 function row(l,ctl,c){var r=mk('div','fr'),s=mk('span');s.textContent=l;r.appendChild(s);[].concat(ctl).forEach(function(x){r.appendChild(x)});c.appendChild(r)}
 function tog(k){var b=mk('button','tgl'+(S[k]?' on':''));b.setAttribute('role','switch');b.onclick=function(){S[k]=S[k]?0:1;b.classList.toggle('on',!!S[k]);ap();save()};return b}
 function rng(k,a,b,s){var i=mk('input');i.type='range';i.min=a;i.max=b;i.step=s;i.value=S[k];i.oninput=function(){S[k]=+i.value;ap()};i.onchange=save;return i}
+function sel(k,o){var s=mk('select');o.forEach(function(x){var e=mk('option',null,x[1]);e.value=x[0];if(S[k]===x[0])e.selected=true;s.appendChild(e)});s.onchange=function(){S[k]=s.value;ap();save()};return s}
+function pDisp(c){
+ row('Jenis huruf',sel('ff',[['seg','Windows (bawaan)'],['ser','Serif'],['mono','Monospace'],['rnd','Bulat']]),c);
+ row('Teks tebal',tog('bld'),c);row('Kontras tinggi',tog('hc'),c);row('Kurangi gerakan',tog('rm'),c);
+ row('Radius sudut',rng('rad',0,18,1),c);row('Bayangan jendela',tog('shd'),c)}
+function pWin(c){
+ var cl=mk('button','fb','Tutup'),mn=mk('button','fb','Minimalkan');
+ cl.onclick=function(){W.slice().forEach(closeW)};mn.onclick=function(){W.forEach(hideW)};
+ row('Buka jendela langsung maksimal',tog('wmx'),c);row('Ukuran awal jendela',rng('wsz',.7,1.5,.05),c);
+ row('Ketuk 2× judul = maksimalkan',tog('dcm'),c);row('Tinggi bar judul',rng('wht',26,44,1),c);
+ row('Transparansi jendela tidak aktif',rng('wio',.5,1,.05),c);
+ row('Tutup semua jendela',cl,c);row('Minimalkan semua jendela',mn,c)}
+function pStart(c){
+ var rh=mk('button','fb','Hapus');rh.onclick=function(){S.rec=[];save();rStart()};
+ row('Lebar menu Mulai',rng('sw',320,720,10),c);row('Lebar kolom aplikasi',rng('pc',56,110,2),c);
+ row('Ukuran ikon aplikasi',rng('ps',24,48,2),c);row('Tampilkan profil pengguna',tog('up'),c);
+ row('Simpan riwayat rekomendasi',tog('trc'),c);row('Hapus riwayat rekomendasi',rh,c)}
+function pTime(c){
+ row('Format tanggal',sel('dfm',[['dmy','dd/mm/yyyy'],['mdy','mm/dd/yyyy'],['ymd','yyyy-mm-dd']]),c);
+ row('Awal pekan di kalender',sel('aw',[['0','Minggu'],['1','Senin']]),c);
+ row('Jam 12 jam (AM/PM)',tog('h12'),c);row('Tampilkan detik',tog('sec'),c);row('Tampilkan tanggal di taskbar',tog('dt'),c)}
+function pSec(c){
+ var pi=mk('input'),kn=mk('button','fb','Kunci');
+ pi.type='password';pi.maxLength=6;pi.placeholder='kosong = mati';pi.value=S.pin||'';
+ pi.onchange=function(){S.pin=pi.value.replace(/\D/g,'').slice(0,6);pi.value=S.pin;save()};
+ kn.onclick=function(){show(null);var b=document.querySelector('#pw [data-p=lock]');if(b)b.click()};
+ row('PIN layar kunci (4–6 angka)',pi,c);
+ row('Kunci otomatis',sel('alk',[['0','Tidak pernah'],['1','1 menit'],['5','5 menit'],['15','15 menit'],['30','30 menit']]),c);
+ row('Pintasan keyboard (Win+L, Win+D)',tog('kb'),c);row('Kunci layar sekarang',kn,c);
+ c.appendChild(mk('div','nb','PIN disimpan di perangkat ini sebagai pengunci ringan, bukan enkripsi.'))}
+function accentRow(c){var cc=mk('input'),x=mk('button','fb','Hapus');cc.type='color';cc.value=S.cc||'#60cdff';cc.oninput=function(){S.cc=cc.value;ap()};cc.onchange=save;x.onclick=function(){S.cc='';ap();save();rFs()};row('Warna aksen kustom',[cc,x],c)}
+function pSys(c){
+ var ta=mk('input'),go=mk('button','fb','Terapkan'),dl=mk('button','fb','Hapus'),ok=0;ta.type='text';ta.value=JSON.stringify(S);
+ go.onclick=function(){try{S=Object.assign(dflt(),JSON.parse(ta.value));save();ap();wall();rDesk();rStart();rFs()}catch(e){go.textContent='Salah!'}};
+ dl.onclick=function(){if(!ok){ok=1;dl.textContent='Ketuk lagi';return}['note','todo','paint'].forEach(function(k){try{localStorage.removeItem('hd_'+k)}catch(e){}});dl.textContent='Terhapus'};
+ row('Kecerahan layar',rng('br',.5,1.2,.02),c);row('Cahaya malam',rng('nt',0,.5,.02),c);
+ row('Cadangan (salin / tempel)',[ta,go],c);row('Hapus data catatan, tugas, gambar',dl,c);
+ c.appendChild(mk('div','nb','Salin teks di kolom cadangan untuk menyimpan pengaturan, lalu tempel dan ketuk Terapkan untuk memulihkannya.'))}
 function pPers(c){
  var f=mk('button','fb','Pilih file'),d=mk('button','fb','Bawaan'),sw=mk('span');
  f.onclick=function(){$('ff').click()};d.onclick=function(){LS.s('wp',0);wall()};row('Wallpaper (gambar / video)',[f,d],c);
- row('Pas di layar (tidak dipotong)',tog('fit'),c);row('Gelapkan wallpaper',rng('dim',0,.8,.05),c);row('Animasi wallpaper bawaan',tog('an'),c);
+ row('Tema wallpaper',sel('wpp',[['finz','FINZ (bawaan)'],['aurora','Aurora'],['senja','Senja'],['hutan','Hutan malam'],['polos','Hitam polos']]),c);row('Ukuran wallpaper',sel('wps',[['cover','Isi layar'],['contain','Pas (tanpa potong)'],['100% 100%','Rentangkan'],['auto','Tengah']]),c);row('Gelapkan wallpaper',rng('dim',0,.8,.05),c);row('Buramkan wallpaper',rng('wbl',0,20,1),c);row('Animasi wallpaper bawaan',tog('an'),c);
  ACC.forEach(function(a,i){var s=mk('button','sw'+(S.ac===i?' on':''));s.style.background='linear-gradient(135deg,'+a[0]+','+a[1]+')';s.onclick=function(){S.ac=i;ap();save();rFs()};sw.appendChild(s)});
- row('Warna aksen',sw,c);row('Gaya Windows 11',tog('w11'),c)}
+ row('Warna aksen',sw,c);accentRow(c);row('Gaya Windows 11',tog('w11'),c);row('Efek geser wallpaper',tog('par'),c);row('Saturasi wallpaper',rng('wsa',0,2,.05),c);row('Putar warna wallpaper',rng('whu',0,360,5),c);row('Ganti tema otomatis',tog('wrot'),c);row('Interval ganti tema',sel('wiv',[['5','5 menit'],['15','15 menit'],['30','30 menit'],['60','60 menit']]),c);row('Transparansi menu & jendela',rng('sfo',.4,1,.02),c);row('Efek blur akrilik',tog('ab'),c);row('Sudut kotak (gaya Windows 10)',tog('sq'),c)}
 function pDesk(c){
  var x=mk('button','fb','Hapus semua');x.onclick=function(){S.desk=[];save();rDesk()};
- row('Ukuran ikon',rng('is',.7,1.6,.1),c);row('Tampilkan nama ikon',tog('lab'),c);row('Tombol “Tambah” di desktop',tog('add'),c);row('Ikon di desktop',x,c)}
+ row('Ukuran ikon',rng('is',.7,1.6,.1),c);row('Tampilkan nama ikon',tog('lab'),c);row('Tombol “Tambah” di desktop',tog('add'),c);row('Ikon di desktop',x,c);row('Jam besar di desktop',tog('dcl'),c);row('Animasi buka jendela',tog('wa'),c);var so=mk('button','fb','A–Z');so.onclick=function(){S.desk.sort(function(a,b){var u=by(a),v=by(b);return ((u&&u.n)||'').localeCompare((v&&v.n)||'')});save();rDesk()};row('Urutkan ikon',so,c);row('Jarak antar ikon',rng('dg',0,24,1),c)}
 function pTask(c){
  row('Transparansi taskbar',rng('tbo',.3,1,.02),c);row('Ikon taskbar rata kiri',tog('tl'),c);row('Ikon status (Wi‑Fi, data, baterai)',tog('st'),c);
- row('Persen baterai',tog('bp'),c);row('Rekomendasi di menu Mulai',tog('rc'),c)}
+ row('Persen baterai',tog('bp'),c);row('Rekomendasi di menu Mulai',tog('rc'),c);row('Tinggi taskbar',rng('tbh',38,60,2),c);row('Menu Mulai di kiri',tog('sl'),c);row('Jam format 12 jam',tog('h12'),c);row('Tampilkan detik',tog('sec'),c);row('Tampilkan tanggal',tog('dt'),c);row('Kotak Cari di taskbar',tog('ts'),c);row('Tombol Cari (ikon)',tog('sbt'),c);row('Tombol Tampilan tugas',tog('tvb'),c);row('Tombol tampilkan desktop (sudut)',tog('sdt'),c);row('Ukuran tombol taskbar',rng('tw',34,56,2),c);row('Jarak antar tombol',rng('tg',0,12,1),c)}
 function pAbout(c){
  var u=mk('input'),r=mk('button','fb','Reset'),ok=0;u.type='text';u.value=S.un;u.onchange=function(){S.un=u.value.trim()||'HyperDesk';ap();save()};
  r.onclick=function(){if(!ok){ok=1;r.textContent='Ketuk lagi';return}S=dflt();save();LS.s('wp',0);ap();wall();rDesk();rStart();rFs()};
- row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.1 — antarmuka gaya Windows 11 untuk HP.'))}
+ row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.4 — antarmuka gaya Windows 11 untuk HP.'))}
 
 /* ---------- mulai ---------- */
 ap();wall();rDesk();rStart();tbar();clock();tray();
-setInterval(clock,15000);setInterval(tray,5000);setTimeout(load,300);
+setInterval(clock,1000);var wt=0;setInterval(function(){if(!S.wrot)return;if(++wt>=(+S.wiv||15)){wt=0;var Ls=['finz','aurora','senja','hutan'];S.wpp=Ls[(Ls.indexOf(S.wpp)+1)%Ls.length];ap();save()}},60000);setInterval(tray,5000);setTimeout(load,300);
 })();
 </script>
+<script>
+/* HyperDesk – tambahan fitur ala Windows 11: kotak cari, kalender, tombol daya, layar kunci.
+   Pasang sebelum </body> di assets/windows.html, SETELAH script utama. */
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i)},app=$('app');
+if(!app)return;
+function mk(t,id,h){var e=document.createElement(t);if(id)e.id=id;if(h!=null)e.innerHTML=h;return e}
+var BLN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],
+    HRI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],
+    p2=function(n){return n<10?'0'+n:''+n};
+function gs(){try{return JSON.parse(localStorage.getItem('hd_s')||'{}')}catch(e){return {}}}
+function closeAll(){['cal','pw','qs'].forEach(function(i){var e=$(i);if(e)e.classList.remove('on')})}
+
+/* 1. kotak cari di taskbar → membuka menu Mulai */
+var sp=$('sp');
+if(sp){
+ var sb=mk('button','tsb','<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Cari</span>');
+ sb.setAttribute('aria-label','Cari');
+ sp.insertBefore(sb,sp.firstChild);
+ sb.addEventListener('click',function(){
+  var st=$('st'),start=document.querySelector('#tc>.tn');
+  closeAll();
+  if(st&&!st.classList.contains('on')&&start)start.click();
+  setTimeout(function(){var q=$('q');if(q)q.focus()},60)});
+}
+
+/* 2. kalender di jam taskbar */
+var cal=mk('div','cal'),cur=new Date();
+app.appendChild(cal);
+function drawCal(){
+ var n=new Date(),y=cur.getFullYear(),m=cur.getMonth(),ws=+gs().aw||0,first=(new Date(y,m,1).getDay()-ws+7)%7,days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),h='';
+ h+='<div class="ct">'+p2(n.getHours())+':'+p2(n.getMinutes())+'</div><div class="cd2">'+HRI[n.getDay()]+', '+n.getDate()+' '+BLN[n.getMonth()]+' '+n.getFullYear()+'</div>';
+ h+='<div class="ch"><span>'+BLN[m]+' '+y+'</span><span><button data-d="-1" aria-label="Bulan sebelumnya">‹</button><button data-d="1" aria-label="Bulan berikutnya">›</button></span></div><div class="cg">';
+ ['Mi','Sn','Sl','Rb','Km','Jm','Sb'].map(function(_,i,a){return a[(i+ws)%7]}).forEach(function(d){h+='<i>'+d+'</i>'});
+ for(var i=first-1;i>=0;i--)h+='<b class="o">'+(prev-i)+'</b>';
+ for(var d=1;d<=days;d++)h+='<b'+(d===n.getDate()&&m===n.getMonth()&&y===n.getFullYear()?' class="t"':'')+'>'+d+'</b>';
+ var rest=(7-(first+days)%7)%7;for(var j=1;j<=rest;j++)h+='<b class="o">'+j+'</b>';
+ cal.innerHTML=h+'</div>'}
+cal.addEventListener('click',function(e){var d=e.target.getAttribute&&e.target.getAttribute('data-d');if(d){cur=new Date(cur.getFullYear(),cur.getMonth()+(+d),1);drawCal()}e.stopPropagation()});
+var cl=$('cl');
+if(cl)cl.addEventListener('click',function(e){
+ e.stopPropagation();var on=cal.classList.contains('on');closeAll();
+ if(!on){cur=new Date();drawCal();cal.classList.add('on')}});
+
+/* 3. layar kunci + tombol daya di menu Mulai */
+var lk=mk('div','lk','<div class="lt"></div><div class="ld"></div><div class="lh">Geser ke atas atau ketuk untuk membuka</div>');
+app.appendChild(lk);
+var lkT;
+function tickLock(){var n=new Date();lk.querySelector('.lt').textContent=p2(n.getHours())+':'+p2(n.getMinutes());lk.querySelector('.ld').textContent=HRI[n.getDay()]+', '+n.getDate()+' '+BLN[n.getMonth()]}
+function lock(off){
+ closeAll();var st=$('st');if(st)st.classList.remove('on');
+ lk.classList.remove('up');lk.classList.toggle('off',!!off);lp.style.display='none';
+ lk.classList.add('on');
+ lk.querySelector('.lt').style.display=lk.querySelector('.ld').style.display=lk.querySelector('.lh').style.display='';
+ if(off){lk.querySelector('.lt').style.display=lk.querySelector('.ld').style.display='none';lk.querySelector('.lh').textContent='Ketuk layar untuk menyalakan'}
+ else{lk.querySelector('.lh').textContent='Geser ke atas atau ketuk untuk membuka';tickLock();clearInterval(lkT);lkT=setInterval(tickLock,15000)}}
+function unlock(){clearInterval(lkT);lk.classList.add('up');setTimeout(function(){lk.classList.remove('on','up','off')},350)}
+var y0=null;
+lk.addEventListener('pointerdown',function(e){y0=e.clientY});
+lk.addEventListener('pointerup',function(e){
+ if(e.target.closest&&e.target.closest('#lp'))return;
+ if(y0===null)return;var dy=y0-e.clientY;y0=null;
+ if(lk.classList.contains('off')){lock(false);return}
+ if(dy>40||Math.abs(dy)<8)tryUnlock()});
+var lp=mk('div','lp');lk.appendChild(lp);
+function pad(pin){
+ var buf='';lp.innerHTML='<div class="pd"></div><div class="pk"></div>';var pd=lp.firstChild,pk=lp.lastChild;
+ function dots(){pd.textContent=buf?'●'.repeat(buf.length):'Masukkan PIN'}dots();
+ '123456789⌫0✓'.split('').forEach(function(k){var b=mk('button',null,k);b.onclick=function(e){e.stopPropagation();
+  if(k==='⌫')buf=buf.slice(0,-1);
+  else if(k==='✓'){if(buf===pin){lp.style.display='none';unlock()}else{buf='';pd.textContent='PIN salah'}return}
+  else if(buf.length<6)buf+=k;
+  dots()};pk.appendChild(b)});
+ lp.style.display='block'}
+function tryUnlock(){var pin=String(gs().pin||'');if(!pin){unlock();return}if(lp.style.display!=='block')pad(pin)}
+var idle=Date.now();['pointerdown','keydown','pointermove'].forEach(function(ev){document.addEventListener(ev,function(){idle=Date.now()},true)});
+setInterval(function(){var m=+gs().alk||0;if(m&&!lk.classList.contains('on')&&Date.now()-idle>m*60000)lock(false)},15000);
+
+var foot=document.querySelector('#st .sf'),pw=mk('div','pw');
+app.appendChild(pw);
+pw.innerHTML='<button data-p="lock">Kunci</button><button data-p="off">Matikan layar</button><button data-p="re">Mulai ulang</button>';
+if(foot){
+ var pb=mk('button','pwb','<svg viewBox="0 0 24 24"><path d="M12 3v9"/><path d="M6.3 7a8 8 0 1 0 11.4 0"/></svg>');
+ pb.setAttribute('aria-label','Daya');foot.appendChild(pb);
+ pb.addEventListener('click',function(e){e.stopPropagation();var on=pw.classList.contains('on');closeAll();if(!on)pw.classList.add('on')})}
+pw.addEventListener('click',function(e){
+ var a=e.target.getAttribute&&e.target.getAttribute('data-p');if(!a)return;
+ pw.classList.remove('on');
+ if(a==='lock')lock(false);else if(a==='off')lock(true);else location.reload()});
+
+/* tutup flyout bila mengetuk di luar */
+document.addEventListener('pointerdown',function(e){
+ if(!e.target.closest)return;
+ if(!e.target.closest('#cal,#pw,#cl,#pwb'))['cal','pw'].forEach(function(i){$(i).classList.remove('on')})},true);
+/* 4. pintasan keyboard: Win = Mulai, Win+L = kunci, Win+D = tampilkan desktop, Esc = tutup panel */
+var mk2=0;
+document.addEventListener('keydown',function(e){
+ if(app.classList.contains('nkb'))return;
+ if(e.key==='Meta'){mk2=1;return}
+ if(e.metaKey&&e.key.toLowerCase()==='l'){e.preventDefault();mk2=0;lock(false)}
+ else if(e.metaKey&&e.key.toLowerCase()==='d'){e.preventDefault();mk2=0;var sd=$('sd');if(sd)sd.click()}
+ else if(e.key==='Escape')closeAll();
+ else mk2=0});
+document.addEventListener('keyup',function(e){if(e.key==='Meta'&&mk2){mk2=0;var s=document.querySelector('#tc>.tn');if(s)s.click()}});
+})();
+
+</script>
+<script>(function(){var a=document.querySelector(".zst .zar");if(!a)return;var r=a.cloneNode(true);r.className="zar zrf";a.parentNode.insertBefore(r,a)})();</script>
 </body>
 </html>
