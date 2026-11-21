@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#0a1b3d">
+<meta name="theme-color" content="#0b1a3a">
 <title>HyperDesk</title>
 <style>
-:root{--bg:#02010a;--sf:rgba(10,6,32,.92);--tx:#fff;--mu:#c8c8c8;--ln:rgba(255,255,255,.09);--f1:#a855f7;--f2:#3b82f6;--g1:rgba(168,85,247,.45);--g2:rgba(59,130,246,.45);--a:var(--f2);--c1:rgba(255,255,255,.06);--c2:rgba(255,255,255,.12);--tbo:.84;--is:1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#02010a;--sf:rgba(10,6,32,.92);--tx:#fff;--mu:#c8c8c8;--ln:rgba(255,255,255,.09);--f1:#60cdff;--f2:#0067c0;--g1:rgba(96,205,255,.35);--g2:rgba(0,103,192,.35);--a:var(--f2);--c1:rgba(255,255,255,.06);--c2:rgba(255,255,255,.12);--tbo:.84;--is:1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{height:100%;background:var(--bg);touch-action:manipulation}
 body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:"Segoe UI Variable","Segoe UI",Roboto,system-ui,sans-serif;overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 button{font:inherit;color:inherit;cursor:pointer}
@@ -200,11 +200,156 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wn.mx .we{display:none}
 #sd{position:absolute;right:0;top:0;bottom:0;width:9px;padding:0;border:0;border-left:1px solid var(--ln);background:none}
 #sd:active,#sd:hover{background:var(--c2)}
+
+/* ===== HyperDesk - tema Windows 11 v2 ===== */
+.tgl{width:40px;height:20px;border-radius:10px;border:1px solid #cfcfcf;background:transparent;position:relative;flex:none;padding:0}
+.tgl::after{content:"";position:absolute;left:4px;top:4px;width:10px;height:10px;border-radius:50%;background:#cfcfcf;transition:left .15s}
+.tgl.on{background:var(--f1);border-color:var(--f1)}
+.tgl.on::after{left:25px;background:#000}
+.w11{--sf:rgba(38,38,42,.86);--ln:rgba(255,255,255,.08);--c1:rgba(255,255,255,.05);--c2:rgba(255,255,255,.09);--mu:#b9b9be;--a:var(--f1);--tbh:48px}
+/* wallpaper bawaan ala "Bloom" */
+#wb.d,.w11 #wb.d{background:#02010a}
+#wb.d::after{display:none}
+.w11 #wb.d::after{display:none}
+/* taskbar 48px, ikon di tengah */
+.w11 #tb{height:var(--tbh);padding:0 8px;background:rgba(32,32,36,var(--tbo));-webkit-backdrop-filter:blur(40px) saturate(1.6);backdrop-filter:blur(40px) saturate(1.6)}
+.w11 #dk,.w11 #wz{bottom:var(--tbh)}
+.w11 #sp,.w11 #ty{flex:1 1 0;min-width:0}
+.w11 #ty{min-width:max-content}
+.w11 #tc{flex:0 1 auto;max-width:72%}
+.w11.tl #sp{flex:0 0 auto}.w11.tl #tc{flex:1 1 auto;max-width:none}.w11.tl #ty{flex:0 0 auto}
+.w11 .tn{width:42px;height:40px;border-radius:6px}
+.w11 .tn .i{width:22px;height:22px}
+.w11 .tn:hover,.w11 .tn:active{background:rgba(255,255,255,.08)}
+.w11 .tn.on,.w11 .tn.act{background:rgba(255,255,255,.07)}
+.w11 .tn.on::after,.w11 .tn.act::after{width:16px;height:3px;bottom:3px;background:var(--f1);box-shadow:none}
+.w11 .tn.run::after{width:6px;height:3px;bottom:3px;background:#9a9aa0}
+.w11 #tc>.tn:nth-child(1) .i rect{fill:var(--f1);stroke:none}
+.w11 .sb{height:36px;border-radius:6px;padding:0 6px;font-size:11px}
+.w11 .sb:hover,.w11 .sb:active{background:rgba(255,255,255,.08)}
+.w11 #cl{padding:4px 8px;border-radius:6px;font-size:11px;line-height:1.25}
+.w11 #cl:active{background:rgba(255,255,255,.08)}
+/* panel mengambang di atas taskbar */
+.w11 #st,.w11 #ps,.w11 #tv{bottom:calc(var(--tbh) + 8px);max-height:calc(100% - var(--tbh) - 18px);border-radius:8px;-webkit-backdrop-filter:blur(40px) saturate(1.6);backdrop-filter:blur(40px) saturate(1.6)}
+.w11 #pm{bottom:calc(var(--tbh) + 8px)}
+.w11 #qs{bottom:calc(var(--tbh) + 8px)}
+.w11 #fs{bottom:calc(var(--tbh) + 8px);height:calc(100% - var(--tbh) - 18px)}
+/* menu Mulai */
+.w11 #st{width:min(92vw,620px);padding:14px 16px 0;gap:10px 16px;grid-template-columns:1fr 170px}
+.w11 #q,.w11 #aq{height:36px;border-radius:18px;background-color:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.3);font-size:13px}
+.w11 .sh{font-size:12px;font-weight:600}
+.w11 #ma,.w11 #pd,.w11 #ca{border-radius:4px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);min-height:26px}
+.w11 #sg{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:4px}
+.w11 .ap{min-height:68px;border-radius:6px;font-size:11px}
+.w11 .ap:hover,.w11 .rc:hover{background:var(--c2)}
+.w11 .rc{border-radius:6px;padding:6px}
+.w11 .sf{margin:0 -16px;padding:10px 16px;background:rgba(0,0,0,.18);border-top:1px solid rgba(255,255,255,.06)}
+.w11 .av{background:linear-gradient(135deg,var(--f1),var(--f2));color:#000;font-weight:600}
+.w11 .tw{border-radius:8px}
+/* ikon desktop */
+.w11 .di{width:calc(64px*var(--is));height:calc(72px*var(--is));border-radius:4px;font-size:calc(11px*var(--is))}
+.w11 .di .ib{width:calc(38px*var(--is));height:calc(38px*var(--is))}
+.w11 .di:hover,.w11 .di:active{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18)}
+/* jendela */
+.w11 .wn{border-radius:8px;background:rgba(32,32,36,.96)}
+.w11 .wn.fc{box-shadow:0 14px 44px rgba(0,0,0,.6)}
+.w11 .wn.mx{border-radius:0}
+.w11 .wh{height:34px;padding:0 0 0 12px;background:rgba(255,255,255,.04)}
+.w11 .wh button{width:46px;height:34px}
+.w11 .wt{font-size:12px}
+.w11 .wi{border-radius:4px}
+/* menu klik kanan */
+.w11 #cm{border-radius:8px;padding:4px}
+.w11 #cm button{border-radius:4px;padding:9px 12px}
+/* pengaturan ala Settings Windows 11 */
+.w11 #fn{width:132px;background:rgba(255,255,255,.03)}
+.w11 #fn button{position:relative;border-radius:4px}
+.w11 #fn button.on{background:rgba(255,255,255,.08);box-shadow:none}
+.w11 #fn button.on::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:2px;background:var(--f1)}
+.w11 .fr{padding:10px 12px;margin-bottom:4px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.04);border-radius:4px}
+.w11 .fb{border-radius:4px;border:1px solid rgba(255,255,255,.08);border-bottom-color:rgba(255,255,255,.16);background:rgba(255,255,255,.07)}
+.w11 .sw{border-radius:50%}
+.w11 .wr{background:none}
+#wl{display:block}
+#wl svg{width:100%;height:100%;margin:0}
+.an #wl svg{animation:pu 4s ease-in-out infinite}
 </style>
 </head>
 <body>
 <div id="app">
-<div id="wp"><div id="wm"><div id="wb" class="d"></div></div><div id="wl"><svg viewBox="0 0 1000 340"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--f1)"/><stop offset="1" style="stop-color:var(--f2)"/></linearGradient><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#c4b5fd"/></linearGradient><filter id="gl" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#gl)"><polygon points="70,30 270,30 245,80 135,80 125,120 225,120 202,165 115,165 80,300 20,300" fill="url(#g1)" stroke="#fff" stroke-opacity=".7" stroke-width="3"/><text x="300" y="175" font-size="130" font-weight="900" font-style="italic" fill="url(#g2)" font-family="Segoe UI,Roboto,sans-serif">FINZ</text><text x="305" y="235" font-size="36" font-weight="800" font-style="italic" letter-spacing="7" fill="url(#g1)" font-family="Segoe UI,Roboto,sans-serif">DESKTOP UI</text><rect x="305" y="250" width="420" height="4" fill="url(#g1)"/><g fill="rgba(80,120,255,.25)" style="stroke:var(--f2)" stroke-width="3" transform="translate(790 90)"><rect width="80" height="70" rx="4"/><rect x="90" width="80" height="70" rx="4"/><rect y="80" width="80" height="70" rx="4"/><rect x="90" y="80" width="80" height="70" rx="4"/></g></g></svg></div><div id="wd"></div></div>
+<div id="wp"><div id="wm"><div id="wb" class="d"></div></div><div id="wl"><svg viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<linearGradient id="fzBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#02010a"/><stop offset=".5" stop-color="#05031a"/><stop offset="1" stop-color="#0a0634"/></linearGradient>
+<radialGradient id="fzGL" cx=".2" cy=".6" r=".5"><stop offset="0" stop-color="#8a2cff" stop-opacity=".4"/><stop offset="1" stop-color="#8a2cff" stop-opacity="0"/></radialGradient>
+<radialGradient id="fzGR" cx=".78" cy=".42" r=".45"><stop offset="0" stop-color="#2f6bff" stop-opacity=".38"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></radialGradient>
+<radialGradient id="fzVg" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient>
+<linearGradient id="fzPB" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1672" y2="0"><stop offset="0" stop-color="#c04bff"/><stop offset=".45" stop-color="#7a5bff"/><stop offset="1" stop-color="#2f9cff"/></linearGradient>
+<linearGradient id="fzFl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e29bff"/><stop offset=".5" stop-color="#8a5cff"/><stop offset="1" stop-color="#45b0ff"/></linearGradient>
+<linearGradient id="fzTx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#c3b2ff"/><stop offset="1" stop-color="#6fa9ff"/></linearGradient>
+<linearGradient id="fzWL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b45cff" stop-opacity=".75"/><stop offset="1" stop-color="#5b6cff" stop-opacity=".65"/></linearGradient>
+<linearGradient id="fzWR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a8cff" stop-opacity=".7"/><stop offset="1" stop-color="#3ab4ff" stop-opacity=".6"/></linearGradient>
+<linearGradient id="fzFlr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0640"/><stop offset="1" stop-color="#02010c"/></linearGradient>
+<linearGradient id="fzHz" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1672" y2="0"><stop offset="0" stop-color="#b04bff" stop-opacity="0"/><stop offset=".15" stop-color="#b04bff"/><stop offset=".6" stop-color="#4a7bff"/><stop offset=".9" stop-color="#3ab4ff"/><stop offset="1" stop-color="#3ab4ff" stop-opacity="0"/></linearGradient>
+<linearGradient id="fzFd" gradientUnits="userSpaceOnUse" x1="0" y1="705" x2="0" y2="941"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+<linearGradient id="fzSt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<filter id="fzGlow" x="-20%" y="-30%" width="140%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="fzSoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
+<filter id="fzBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="fzTiny"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<mask id="fzMk"><rect x="0" y="705" width="1672" height="236" fill="url(#fzFd)"/></mask>
+<g id="fzArt">
+<g filter="url(#fzGlow)">
+<ellipse cx="450" cy="418" rx="238" ry="48" transform="rotate(-10 450 418)" fill="none" stroke="url(#fzPB)" stroke-width="3" stroke-dasharray="560 220" stroke-linecap="round"/>
+<polygon points="362,322 728,292 692,350 560,356 540,392 628,388 598,436 512,442 478,510 360,586 392,452 352,432 398,418 372,386 410,372" fill="url(#fzFl)" stroke="#fff" stroke-opacity=".85" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="374,326 720,298 692,338 424,352" fill="#fff" fill-opacity=".28"/>
+<polygon points="412,374 548,358 522,440 474,504" fill="#fff" fill-opacity=".14"/>
+<polygon points="552,392 626,390 604,430 530,436" fill="#fff" fill-opacity=".22"/>
+<text x="640" y="482" font-size="120" font-weight="900" font-style="italic" textLength="456" lengthAdjust="spacingAndGlyphs" fill="url(#fzTx)" stroke="#fff" stroke-opacity=".55" stroke-width="1.5" font-family="'Segoe UI Variable','Segoe UI',Roboto,Arial,sans-serif">FINZ</text>
+<text x="690" y="527" font-size="32" font-weight="800" textLength="336" lengthAdjust="spacing" fill="url(#fzPB)" font-family="'Segoe UI Variable','Segoe UI',Roboto,Arial,sans-serif">DESKTOP UI</text>
+<path d="M548 515H662M1050 515H1164" stroke="url(#fzPB)" stroke-width="2" stroke-linecap="round"/>
+<g stroke="#cfe6ff" stroke-width="2.5" stroke-linejoin="round" stroke-opacity=".9">
+<polygon points="1240,352 1350,334 1350,430 1240,436" fill="url(#fzWL)"/>
+<polygon points="1364,330 1508,302 1512,424 1364,431" fill="url(#fzWR)"/>
+<polygon points="1240,452 1350,446 1350,548 1240,538" fill="url(#fzWL)"/>
+<polygon points="1364,443 1512,436 1508,570 1364,550" fill="url(#fzWR)"/>
+</g>
+</g>
+</g>
+</defs>
+<rect width="1672" height="941" fill="url(#fzBg)"/>
+<rect width="1672" height="941" fill="url(#fzGL)"/>
+<rect width="1672" height="941" fill="url(#fzGR)"/>
+<g fill="none" stroke="url(#fzPB)" stroke-linecap="round">
+<g filter="url(#fzSoft)" stroke-width="46" opacity=".16">
+<path d="M700 470C820 300 1000 120 1220 60C1420 10 1600 90 1620 250C1635 360 1560 450 1450 520"/>
+<path d="M600 560C760 330 960 110 1250 30C1450-20 1650 60 1672 200"/>
+</g>
+<g filter="url(#fzTiny)" stroke-width="2" opacity=".85">
+<path d="M700 470C820 300 1000 120 1220 60C1420 10 1600 90 1620 250C1635 360 1560 450 1450 520"/>
+<path d="M760 520C880 360 1040 200 1240 140C1400 100 1540 150 1560 280C1570 380 1500 470 1400 560"/>
+<path d="M900 560C1000 420 1100 300 1260 250C1380 215 1470 260 1460 340" opacity=".8"/>
+<path d="M600 560C760 330 960 110 1250 30C1450-20 1650 60 1672 200" opacity=".7"/>
+<path d="M640 600C780 420 940 260 1160 190" opacity=".5"/>
+</g>
+</g>
+<path d="M0 440C180 440 360 520 520 620C620 680 700 700 760 705L0 705Z" fill="#8a2cff" fill-opacity=".2"/>
+<path d="M900 705C1050 600 1200 560 1380 600C1520 630 1600 600 1672 520L1672 705Z" fill="#2f6bff" fill-opacity=".22"/>
+<g fill="none" stroke="url(#fzPB)" stroke-linecap="round" filter="url(#fzTiny)">
+<path d="M-20 450C200 430 420 520 600 610C760 690 980 650 1180 590C1350 540 1520 560 1700 620" stroke-width="2.2" opacity=".9"/>
+<path d="M-20 520C220 520 430 600 620 660C780 700 1000 640 1150 580" stroke-width="1.8" opacity=".7"/>
+<path d="M0 445C180 445 360 525 520 622" stroke-width="2.5" opacity=".9"/>
+<path d="M900 705C1050 600 1200 560 1380 600C1520 630 1600 600 1672 520" stroke-width="2" opacity=".85"/>
+</g>
+<use href="#fzArt"/>
+<rect y="705" width="1672" height="236" fill="url(#fzFlr)"/>
+<ellipse cx="470" cy="800" rx="420" ry="90" fill="#9a3cff" opacity=".3" filter="url(#fzSoft)"/>
+<ellipse cx="1380" cy="800" rx="380" ry="90" fill="#2f7bff" opacity=".3" filter="url(#fzSoft)"/>
+<g mask="url(#fzMk)"><g opacity=".5" filter="url(#fzBlur)"><use href="#fzArt" transform="translate(0 1410) scale(1 -1)"/></g></g>
+<g filter="url(#fzSoft)" opacity=".6"><rect x="340" y="705" width="150" height="236" fill="url(#fzSt)" transform="skewX(-8)" style="fill:#b04bff;opacity:.35"/><rect x="1250" y="705" width="250" height="236" style="fill:#3a8cff;opacity:.4"/></g>
+<rect y="702" width="1672" height="3.5" fill="url(#fzHz)" filter="url(#fzTiny)"/>
+<rect width="1672" height="941" fill="url(#fzVg)"/>
+</svg></div>
+<div id="wd"></div></div>
 <div id="dk"></div>
 <div id="wz"></div>
 <section id="st" aria-label="Menu Mulai">
@@ -252,8 +397,8 @@ var SM='<svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg>',
     SC='<svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg>';
 
 /* ---------- pengaturan tersimpan ---------- */
-var ACC=[['#a855f7','#3b82f6','rgba(168,85,247,.45)','rgba(59,130,246,.45)'],['#ec4899','#f97316','rgba(236,72,153,.45)','rgba(249,115,22,.45)'],['#10b981','#06b6d4','rgba(16,185,129,.45)','rgba(6,182,212,.45)'],['#ef4444','#f59e0b','rgba(239,68,68,.45)','rgba(245,158,11,.45)'],['#60cdff','#2563eb','rgba(96,205,255,.45)','rgba(37,99,235,.45)']];
-var DEF={desk:['b:note','b:calc','b:web','b:term'],pins:['b:note','b:calc','b:web','b:term'],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:.25,ac:0,w11:1,an:0,un:'HyperDesk'};
+var ACC=[['#60cdff','#0067c0','rgba(96,205,255,.35)','rgba(0,103,192,.35)'],['#a855f7','#3b82f6','rgba(168,85,247,.45)','rgba(59,130,246,.45)'],['#ec4899','#f97316','rgba(236,72,153,.45)','rgba(249,115,22,.45)'],['#10b981','#06b6d4','rgba(16,185,129,.45)','rgba(6,182,212,.45)'],['#ef4444','#f59e0b','rgba(239,68,68,.45)','rgba(245,158,11,.45)'],['#60cdff','#2563eb','rgba(96,205,255,.45)','rgba(37,99,235,.45)']];
+var DEF={desk:['b:note','b:calc','b:web','b:term'],pins:['b:note','b:calc','b:web','b:term'],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:0,ac:0,w11:1,an:0,un:'HyperDesk'};
 var dflt=function(){return JSON.parse(JSON.stringify(DEF))};
 var S=Object.assign(dflt(),LS.g('s',{}));
 function save(){LS.s('s',S)}
@@ -393,7 +538,7 @@ var BODY={
    else if(c==='clear')o.textContent='';
    else if(c==='date')p(new Date().toLocaleString('id-ID'));
    else if(c==='echo')p(a.join(' '));
-   else if(c==='ver')p('HyperDesk 1.0');
+   else if(c==='ver')p('HyperDesk 1.1');
    else if(c==='apps')p(apps.map(function(x){return x.n}).join(', '));
    else if(c==='bat'){var s=stt();p(s?'Baterai '+s.bat+'%':'Tidak tersedia')}
    else if(c==='open'){var x=apps.filter(function(y){return (y.n||'').toLowerCase()===r})[0]||apps.filter(function(y){return (y.n||'').toLowerCase().indexOf(r)>-1})[0];if(x)openApp(x);else p('Aplikasi tidak ditemukan')}
@@ -510,7 +655,7 @@ function rFs(){
  T.forEach(function(t,i){var b=mk('button',i===tab?'on':null,t[0]);b.onclick=function(){tab=i;rFs()};n.appendChild(b)});
  var x=mk('button','x','Tutup');x.onclick=function(){show(null)};n.appendChild(x);T[tab][1](c)}
 function row(l,ctl,c){var r=mk('div','fr'),s=mk('span');s.textContent=l;r.appendChild(s);[].concat(ctl).forEach(function(x){r.appendChild(x)});c.appendChild(r)}
-function tog(k){var b=mk('button','fb',S[k]?'Aktif':'Mati');b.onclick=function(){S[k]=S[k]?0:1;b.textContent=S[k]?'Aktif':'Mati';ap();save()};return b}
+function tog(k){var b=mk('button','tgl'+(S[k]?' on':''));b.setAttribute('role','switch');b.onclick=function(){S[k]=S[k]?0:1;b.classList.toggle('on',!!S[k]);ap();save()};return b}
 function rng(k,a,b,s){var i=mk('input');i.type='range';i.min=a;i.max=b;i.step=s;i.value=S[k];i.oninput=function(){S[k]=+i.value;ap()};i.onchange=save;return i}
 function pPers(c){
  var f=mk('button','fb','Pilih file'),d=mk('button','fb','Bawaan'),sw=mk('span');
@@ -527,7 +672,7 @@ function pTask(c){
 function pAbout(c){
  var u=mk('input'),r=mk('button','fb','Reset'),ok=0;u.type='text';u.value=S.un;u.onchange=function(){S.un=u.value.trim()||'HyperDesk';ap();save()};
  r.onclick=function(){if(!ok){ok=1;r.textContent='Ketuk lagi';return}S=dflt();save();LS.s('wp',0);ap();wall();rDesk();rStart();rFs()};
- row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.0 — antarmuka desktop untuk HP.'))}
+ row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.1 — antarmuka gaya Windows 11 untuk HP.'))}
 
 /* ---------- mulai ---------- */
 ap();wall();rDesk();rStart();tbar();clock();tray();
