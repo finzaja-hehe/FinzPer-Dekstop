@@ -618,7 +618,7 @@ var SM='<svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg>',
 
 /* ---------- pengaturan tersimpan ---------- */
 var ACC=[['#60cdff','#0067c0','rgba(96,205,255,.35)','rgba(0,103,192,.35)'],['#a855f7','#3b82f6','rgba(168,85,247,.45)','rgba(59,130,246,.45)'],['#ec4899','#f97316','rgba(236,72,153,.45)','rgba(249,115,22,.45)'],['#10b981','#06b6d4','rgba(16,185,129,.45)','rgba(6,182,212,.45)'],['#ef4444','#f59e0b','rgba(239,68,68,.45)','rgba(245,158,11,.45)'],['#60cdff','#2563eb','rgba(96,205,255,.45)','rgba(37,99,235,.45)'],['#a3e635','#10b981','rgba(163,230,53,.4)','rgba(16,185,129,.45)'],['#f9a8d4','#ec4899','rgba(249,168,212,.4)','rgba(236,72,153,.45)'],['#fde047','#f59e0b','rgba(253,224,71,.4)','rgba(245,158,11,.45)'],['#f0abfc','#22d3ee','rgba(240,171,252,.45)','rgba(34,211,238,.45)'],['#c4b5fd','#7c3aed','rgba(196,181,253,.4)','rgba(124,58,237,.5)'],['#ffffff','#94a3b8','rgba(255,255,255,.3)','rgba(148,163,184,.35)']];
-var DEF={anm:'geser',anq:.22,ind:'line',tbg:0,tic:0,ckp:0,lks:'tipis',lkp:'atas',lsz:96,lkw:'def',lkm:'',lkb:0,lkh:1,mv:'grid',ish:'def',abj:0,qh:32,mtc:0,cks:'tipis',cpos:'kanan',csz:54,cds:0,cdd:1,cbt:0,bsh:'def',gl:40,si:19,stm:0,fl:0,glw:0,prs:1,vib:0,tbc:'def',desk:[],pins:[],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:0,ac:0,w11:1,an:0,tbh:48,wps:'cover',wbl:0,h12:0,sec:0,dt:1,sl:0,sq:0,ab:1,sfo:.86,wpp:'finz',cc:'',br:1,nt:0,dcl:0,wa:1,ts:1,rad:8,wht:32,wio:1,pc:68,ps:32,sw:600,tw:42,tg:2,dg:0,ff:'seg',bld:0,hc:0,rm:0,shd:1,up:1,kb:1,tvb:1,sbt:1,sdt:1,wmx:0,wsz:1,dcm:1,par:1,wrot:0,wiv:'15',wsa:1,whu:0,pin:'',alk:'0',aw:'0',dfm:'dmy',trc:1,un:'HyperDesk'};
+var DEF={tcc:'',pcc:'',pco:.9,anm:'geser',anq:.22,ind:'line',tbg:0,tic:0,ckp:0,lks:'tipis',lkp:'atas',lsz:96,lkw:'def',lkm:'',lkb:0,lkh:1,mv:'grid',ish:'def',abj:0,qh:32,mtc:0,cks:'tipis',cpos:'kanan',csz:54,cds:0,cdd:1,cbt:0,bsh:'def',gl:40,si:19,stm:0,fl:0,glw:0,prs:1,vib:0,tbc:'def',desk:[],pins:[],rec:[],is:1,lab:1,add:1,tbo:.84,tl:0,st:1,bp:1,nr:0,rc:1,fit:0,dim:0,ac:0,w11:1,an:0,tbh:48,wps:'cover',wbl:0,h12:0,sec:0,dt:1,sl:0,sq:0,ab:1,sfo:.86,wpp:'finz',cc:'',br:1,nt:0,dcl:0,wa:1,ts:1,rad:8,wht:32,wio:1,pc:68,ps:32,sw:600,tw:42,tg:2,dg:0,ff:'seg',bld:0,hc:0,rm:0,shd:1,up:1,kb:1,tvb:1,sbt:1,sdt:1,wmx:0,wsz:1,dcm:1,par:1,wrot:0,wiv:'15',wsa:1,whu:0,pin:'',alk:'0',aw:'0',dfm:'dmy',trc:1,un:'HyperDesk'};
 var dflt=function(){return JSON.parse(JSON.stringify(DEF))};
 var S=Object.assign(dflt(),LS.g('s',{}));
 ['desk','pins','rec'].forEach(function(k){if(Array.isArray(S[k]))S[k]=S[k].filter(function(p){return String(p).indexOf('b:')!==0})});
@@ -630,11 +630,13 @@ function ap(){
  R.setProperty('--is',S.is);
  R.setProperty('--gl',(S.gl||0)+'px');R.setProperty('--si',(S.si||19)+'px');
  R.setProperty('--tbr',({def:'32,32,36',biru:'10,30,70',ungu:'30,12,60',hijau:'8,40,34',hitam:'0,0,0'})[S.tbc]||'32,32,36');
- a.toggle('fl',!!S.fl);a.toggle('glw',!!S.glw);a.toggle('stm',!!S.stm);a.toggle('nprs',!S.prs);$('app').setAttribute('data-bsh',S.bsh||'def');$('app').setAttribute('data-cks',S.cks||'tipis');$('app').setAttribute('data-cpos',S.cpos||'kanan');R.setProperty('--csz',(S.csz||54)+'px');R.setProperty('--qh',(S.qh||32)+'px');a.toggle('mvl',S.mv==='list');R.setProperty('--qd',(S.anq||.22)+'s');$('app').setAttribute('data-anm',S.anm||'geser');a.toggle('tbg',!!S.tbg);a.toggle('tic',!!S.tic);a.toggle('ckp',!!S.ckp);$('app').setAttribute('data-ind',S.ind||'line');R.setProperty('--lsz',(S.lsz||96)+'px');a.toggle('nlh',!S.lkh);$('app').setAttribute('data-lks',S.lks||'tipis');$('app').setAttribute('data-lkp',S.lkp||'atas');$('app').setAttribute('data-lkw',S.lkw||'def');try{lkx()}catch(e){}a.toggle('mtc',!!S.mtc);$('app').setAttribute('data-ish',S.ish||'def');R.setProperty('--tbo',S.tbo);R.setProperty('--f1',c[0]);R.setProperty('--f2',c[1]);R.setProperty('--g1',c[2]);R.setProperty('--g2',c[3]);
+ a.toggle('fl',!!S.fl);a.toggle('glw',!!S.glw);a.toggle('stm',!!S.stm);a.toggle('nprs',!S.prs);$('app').setAttribute('data-bsh',S.bsh||'def');$('app').setAttribute('data-cks',S.cks||'tipis');$('app').setAttribute('data-cpos',S.cpos||'kanan');R.setProperty('--csz',(S.csz||54)+'px');R.setProperty('--qh',(S.qh||32)+'px');a.toggle('mvl',S.mv==='list');
+ var tr=h2r(S.tcc);if(tr)R.setProperty('--tbr',tr.join(','));
+R.setProperty('--qd',(S.anq||.22)+'s');$('app').setAttribute('data-anm',S.anm||'geser');a.toggle('tbg',!!S.tbg);a.toggle('tic',!!S.tic);a.toggle('ckp',!!S.ckp);$('app').setAttribute('data-ind',S.ind||'line');R.setProperty('--lsz',(S.lsz||96)+'px');a.toggle('nlh',!S.lkh);$('app').setAttribute('data-lks',S.lks||'tipis');$('app').setAttribute('data-lkp',S.lkp||'atas');$('app').setAttribute('data-lkw',S.lkw||'def');try{lkx()}catch(e){}a.toggle('mtc',!!S.mtc);$('app').setAttribute('data-ish',S.ish||'def');R.setProperty('--tbo',S.tbo);R.setProperty('--f1',c[0]);R.setProperty('--f2',c[1]);R.setProperty('--g1',c[2]);R.setProperty('--g2',c[3]);
  w.setProperty('--g1',c[2]);w.setProperty('--g2',c[3]);
  a.toggle('w11',!!S.w11);a.toggle('nl',!S.lab);a.toggle('na',!S.add);a.toggle('tl',!!S.tl);a.toggle('hs',!S.st);
  a.toggle('nbp',!S.bp);a.toggle('nr',!S.rc);a.toggle('fit',!!S.fit);a.toggle('an',!!S.an);
- var q=$('app').style;q.setProperty('--tbh',S.tbh+'px');q.setProperty('--sf','rgba(38,38,42,'+S.sfo+')');q.setProperty('--wps',S.wps);
+ var q=$('app').style;q.setProperty('--tbh',S.tbh+'px');var pr=h2r(S.pcc);q.setProperty('--sf','rgba('+(pr?pr.join(','):'38,38,42')+','+(pr?(S.pco||.9):S.sfo)+')');q.setProperty('--wps',S.wps);
  $('wm').style.filter='blur('+S.wbl+'px) saturate('+S.wsa+') hue-rotate('+S.whu+'deg)';a.toggle('fit',!!S.fit||S.wps==='contain');a.toggle('sl',!!S.sl);a.toggle('sq',!!S.sq);a.toggle('nab',!S.ab);a.toggle('nts',!S.ts);a.toggle('nwa',!S.wa);$('app').dataset.wp=S.wpp;q.filter=S.br===1?'':'brightness('+S.br+')';$('nt').style.opacity=S.nt;
  if(S.cc){R.setProperty('--f1',S.cc);R.setProperty('--f2',S.cc);R.setProperty('--g1',S.cc+'59');R.setProperty('--g2',S.cc+'59')}
  q.setProperty('--rad',S.rad+'px');q.setProperty('--wht',S.wht+'px');q.setProperty('--wio',S.wio);q.setProperty('--pc',S.pc+'px');q.setProperty('--ps',S.ps+'px');q.setProperty('--sw',S.sw+'px');q.setProperty('--tw',S.tw+'px');q.setProperty('--tg',S.tg+'px');q.setProperty('--dg',S.dg+'px');q.fontFamily=FF[S.ff]||'';
@@ -1054,6 +1056,10 @@ function pDesk(c){
 function pTask(c){
  row('Transparansi taskbar',rng('tbo',.3,1,.02),c);row('Ikon taskbar rata kiri',tog('tl'),c);row('Ikon status (Wi‑Fi, data, baterai)',tog('st'),c);
  row('Persen baterai',tog('bp'),c);row('Rekomendasi di menu Mulai',tog('rc'),c);row('Tinggi taskbar',rng('tbh',38,60,2),c);row('Menu Mulai di kiri',tog('sl'),c);row('Jam format 12 jam',tog('h12'),c);row('Tampilkan detik',tog('sec'),c);row('Tampilkan tanggal',tog('dt'),c);row('Kotak Cari di taskbar',tog('ts'),c);row('Tombol Cari (ikon)',tog('sbt'),c);row('Tombol Tampilan tugas',tog('tvb'),c);row('Tombol tampilkan desktop (sudut)',tog('sdt'),c);row('Ukuran tombol taskbar',rng('tw',34,56,2),c);row('Jarak antar tombol',rng('tg',0,12,1),c)}
+function h2r(h){var m=/^#?([0-9a-f]{6})$/i.exec(h||'');if(!m)return null;var n=parseInt(m[1],16);return [(n>>16)&255,(n>>8)&255,n&255]}
+function colRow(l,k,def,c){var i=mk('input'),x=mk('button','fb','Hapus');i.type='color';i.value=S[k]||def;
+ i.oninput=function(){S[k]=i.value;ap()};i.onchange=save;
+ x.onclick=function(){S[k]='';ap();save();rFs()};row(l,[i,x],c)}
 var PRE=[
  ['Samudra',{wpp:'samudra',ac:5,tbc:'biru',glw:0},'#38bdf8,#1e40af'],
  ['Sakura',{wpp:'sakura',ac:7,tbc:'ungu',glw:0},'#f9a8d4,#be185d'],
@@ -1068,6 +1074,9 @@ function pGaya(c){
  row('Tema cepat (wallpaper + warna)',[],c);c.appendChild(pg);
  row('Bentuk tombol',sel('bsh',[['def','Bawaan'],['round','Bulat'],['pill','Kapsul'],['sq','Kotak']]),c);
  row('Warna taskbar',sel('tbc',[['def','Abu gelap'],['biru','Biru malam'],['ungu','Ungu'],['hijau','Hijau tua'],['hitam','Hitam']]),c);
+ colRow('Warna taskbar kustom','tcc','#202024',c);
+ colRow('Warna menu & panel kustom','pcc','#26262a',c);
+ row('Transparansi warna menu & panel',rng('pco',.5,1,.02),c);
  row('Efek kaca (blur)',rng('gl',0,60,2),c);
  row('Taskbar melayang',tog('fl'),c);
  row('Garis cahaya taskbar',tog('glw'),c);
@@ -1082,7 +1091,7 @@ function pGaya(c){
  row('Ikon taskbar warna aksen',tog('tic'),c);
  row('Jam taskbar bentuk kapsul',tog('ckp'),c);
  var rs=mk('button','fb','Atur ulang gaya');
- rs.onclick=function(){['bsh','gl','si','stm','fl','glw','prs','vib','tbc','ind','tbg','tic','ckp','anm','anq'].forEach(function(k){S[k]=DEF[k]});ap();save();rFs()};
+ rs.onclick=function(){['bsh','gl','si','stm','fl','glw','prs','vib','tbc','ind','tbg','tic','ckp','anm','anq','tcc','pcc','pco'].forEach(function(k){S[k]=DEF[k]});ap();save();rFs()};
  row('Kembalikan gaya ke bawaan',rs,c)}
 function lkx(){
  var l=$('lk');if(!l)return;
@@ -1163,13 +1172,4 @@ if(cl)cl.addEventListener('click',function(e){
  if(!on){cur=new Date();drawCal();cal.classList.add('on')}});
 
 /* 3. layar kunci + tombol daya di menu Mulai */
-var lk=mk('div','lk','<div class="lt"></div><div class="ld"></div><div class="lh">Geser ke atas atau ketuk untuk membuka</div>');
-app.appendChild(lk);
-var lkT;
-function tickLock(){var n=new Date();lk.querySelector('.lt').textContent=p2(n.getHours())+':'+p2(n.getMinutes());lk.querySelector('.ld').textContent=HRI[n.getDay()]+', '+n.getDate()+' '+BLN[n.getMonth()]}
-function lock(off){
- closeAll();var st=$('st');if(st)st.classList.remove('on');
- lk.classList.remove('up');lk.classList.toggle('off',!!off);lp.style.display='none';
- lk.classList.add('on');
- lk.querySelector('.lt').style.display=lk.querySelector('.ld').style.display=lk.querySelector('.lh').style.display='';
- if(off){lk.querySelector('.lt').style.display
+var lk=mk('div','lk','<
