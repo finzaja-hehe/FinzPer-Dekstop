@@ -785,7 +785,7 @@ var BODY={
    else if(c==='clear')o.textContent='';
    else if(c==='date')p(new Date().toLocaleString('id-ID'));
    else if(c==='echo')p(a.join(' '));
-   else if(c==='ver')p('HyperDesk 1.4');
+   else if(c==='ver')p('HyperDesk 1.5');
    else if(c==='apps')p(apps.map(function(x){return x.n}).join(', '));
    else if(c==='bat'){var s=stt();p(s?'Baterai '+s.bat+'%':'Tidak tersedia')}
    else if(c==='open'){var x=apps.filter(function(y){return (y.n||'').toLowerCase()===r})[0]||apps.filter(function(y){return (y.n||'').toLowerCase().indexOf(r)>-1})[0];if(x)openApp(x);else p('Aplikasi tidak ditemukan')}
@@ -829,7 +829,7 @@ BODY.todo=function(w){
  bar.appendChild(i);bar.appendChild(ad);w.c.appendChild(bar);w.c.appendChild(ls);draw()};
 BODY.info=function(w){
  var s=stt(),up=Math.round(performance.now()/60000),d=mk('div','inf'),
- R=[['Nama perangkat',S.un],['Layar',screen.width+' × '+screen.height],['Jendela',innerWidth+' × '+innerHeight],['Inti CPU',navigator.hardwareConcurrency||'?'],['Memori (perkiraan)',navigator.deviceMemory?navigator.deviceMemory+' GB':'?'],['Baterai',s?s.bat+'%'+(s.chg?' (mengisi)':''):'Tidak tersedia'],['Aplikasi',apps.length],['Jendela terbuka',W.length],['Aktif sejak',up+' menit'],['Bahasa',navigator.language],['Versi','HyperDesk 1.4']];
+ R=[['Nama perangkat',S.un],['Layar',screen.width+' × '+screen.height],['Jendela',innerWidth+' × '+innerHeight],['Inti CPU',navigator.hardwareConcurrency||'?'],['Memori (perkiraan)',navigator.deviceMemory?navigator.deviceMemory+' GB':'?'],['Baterai',s?s.bat+'%'+(s.chg?' (mengisi)':''):'Tidak tersedia'],['Aplikasi',apps.length],['Jendela terbuka',W.length],['Aktif sejak',up+' menit'],['Bahasa',navigator.language],['Versi','HyperDesk 1.5']];
  R.forEach(function(r){var x=mk('div'),a=mk('span'),b=mk('span');a.textContent=r[0];b.textContent=r[1];x.appendChild(a);x.appendChild(b);d.appendChild(x)});w.c.appendChild(d)};
 var SZ={paint:[420,360],clk:[300,230],todo:[320,320],info:[330,330],note:[340,260],calc:[250,340],web:[440,320],term:[380,260]};
 function win(a){
@@ -1130,7 +1130,7 @@ function pLock(c){
 function pAbout(c){
  var u=mk('input'),r=mk('button','fb','Reset'),ok=0;u.type='text';u.value=S.un;u.onchange=function(){S.un=u.value.trim()||'HyperDesk';ap();save()};
  r.onclick=function(){if(!ok){ok=1;r.textContent='Ketuk lagi';return}S=dflt();save();LS.s('wp',0);ap();wall();rDesk();rStart();rFs()};
- row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.4 — antarmuka gaya Windows 11 untuk HP.'))}
+ row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.5 — antarmuka gaya Windows 11 untuk HP.'))}
 
 /* ===== MULTITASKING: Snap/Split, Alt+Tab, Multi Desktop ===== */
 (function(){
