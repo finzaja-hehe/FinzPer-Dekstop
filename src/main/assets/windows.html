@@ -564,6 +564,16 @@ background:radial-gradient(34% 38% at 12% 80%,rgba(170,60,255,.5),transparent 70
 #app[data-anm=zoom] #st.on,#app[data-anm=zoom] #fs.on,#app[data-anm=zoom] #qs.on,#app[data-anm=zoom] #cal.on,#app[data-anm=zoom] #pw.on{animation:qa-zoom var(--qd,.22s) cubic-bezier(.2,.8,.2,1);transform-origin:50% 100%}
 #app[data-anm=pudar] #st.on,#app[data-anm=pudar] #fs.on,#app[data-anm=pudar] #qs.on,#app[data-anm=pudar] #cal.on,#app[data-anm=pudar] #pw.on{animation:qa-pudar var(--qd,.22s) ease-out}
 @media (prefers-reduced-motion:reduce){#st.on,#fs.on,#qs.on,#cal.on,#pw.on{animation:none!important}}
+/* --- Multitasking --- */
+.wdh{display:none!important}
+.snp{position:absolute;display:none;pointer-events:none;z-index:99999;box-sizing:border-box;border-radius:8px;background:rgba(96,205,255,.16);border:2px solid var(--f1,#60cdff);transition:all .12s}
+.atb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:200;display:none;gap:8px;padding:14px;max-width:92%;overflow-x:auto;border-radius:10px;background:rgba(32,32,36,.92);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px)}
+.atb.on{display:flex}
+.ati{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:96px;padding:12px 8px;border-radius:8px;font-size:11px;text-align:center;border:2px solid transparent}
+.ati.on{border-color:var(--f1,#60cdff);background:rgba(255,255,255,.08)}
+.dsk{display:flex;gap:6px;flex-wrap:wrap}
+.dkb{padding:6px 12px;border-radius:6px;font-size:12px;background:var(--c1);border:1px solid var(--ln);color:inherit}
+.dkb.on{border-color:var(--f1,#60cdff)}
 </style>
 </head>
 <body>
@@ -1122,47 +1132,32 @@ function pAbout(c){
  r.onclick=function(){if(!ok){ok=1;r.textContent='Ketuk lagi';return}S=dflt();save();LS.s('wp',0);ap();wall();rDesk();rStart();rFs()};
  row('Nama pengguna',u,c);row('Atur ulang semua pengaturan',r,c);c.appendChild(mk('div','nb','HyperDesk 1.4 — antarmuka gaya Windows 11 untuk HP.'))}
 
-/* ---------- mulai ---------- */
-ap();wall();rDesk();rStart();tbar();clock();tray();
-setInterval(clock,1000);var wt=0;setInterval(function(){if(!S.wrot)return;if(++wt>=(+S.wiv||15)){wt=0;var Ls=['finz','aurora','senja','hutan','samudra','sakura','neon','galaksi','lava','mint'];S.wpp=Ls[(Ls.indexOf(S.wpp)+1)%Ls.length];ap();save()}},60000);setInterval(tray,5000);setTimeout(load,300);
-})();
-</script>
-<script>
-/* HyperDesk – tambahan fitur ala Windows 11: kotak cari, kalender, tombol daya, layar kunci.
-   Pasang sebelum </body> di assets/windows.html, SETELAH script utama. */
+/* ===== MULTITASKING: Snap/Split, Alt+Tab, Multi Desktop ===== */
 (function(){
-'use strict';
-var $=function(i){return document.getElementById(i)},app=$('app');
-if(!app)return;
-function mk(t,id,h){var e=document.createElement(t);if(id)e.id=id;if(h!=null)e.innerHTML=h;return e}
-var BLN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],
-    HRI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],
-    p2=function(n){return n<10?'0'+n:''+n};
-function gs(){try{return JSON.parse(localStorage.getItem('hd_s')||'{}')}catch(e){return {}}}
-function closeAll(){['cal','pw','qs'].forEach(function(i){var e=$(i);if(e)e.classList.remove('on')})}
-
-/* 1. kotak cari di taskbar → membuka menu Mulai */
-var sp=$('sp');
-if(sp){
- var sb=mk('button','tsb','<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Cari</span>');
- sb.setAttribute('aria-label','Cari');
- sp.insertBefore(sb,sp.firstChild);
- sb.addEventListener('click',function(){
-  var st=$('st'),start=document.querySelector('#tc>.tn');
-  closeAll();
-  if(st&&!st.classList.contains('on')&&start)start.click();
-  setTimeout(function(){var q=$('q');if(q)q.focus()},60)});
-}
-
-/* 2. kalender di jam taskbar */
-var cal=mk('div','cal'),cur=new Date();
-app.appendChild(cal);
-function drawCal(){
- var n=new Date(),y=cur.getFullYear(),m=cur.getMonth(),ws=+gs().aw||0,first=(new Date(y,m,1).getDay()-ws+7)%7,days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),h='';
- h+='<div class="ct">'+p2(n.getHours())+':'+p2(n.getMinutes())+'</div><div class="cd2">'+HRI[n.getDay()]+', '+n.getDate()+' '+BLN[n.getMonth()]+' '+n.getFullYear()+'</div>';
- h+='<div class="ch"><span>'+BLN[m]+' '+y+'</span><span><button data-d="-1" aria-label="Bulan sebelumnya">‹</button><button data-d="1" aria-label="Bulan berikutnya">›</button></span></div><div class="cg">';
- ['Mi','Sn','Sl','Rb','Km','Jm','Sb'].map(function(_,i,a){return a[(i+ws)%7]}).forEach(function(d){h+='<i>'+d+'</i>'});
- for(var i=first-1;i>=0;i--)h+='<b class="o">'+(prev-i)+'</b>';
- for(var d=1;d<=days;d++)h+='<b'+(d===n.getDate()&&m===n.getMonth()&&y===n.getFullYear()?' class="t"':'')+'>'+d+'</b>';
- var rest=(7-(first+days)%7)%7;for(var j=1;j<=rest;j++)h+='<b class="o">'+j+'</b>';
- cal.
+var z=$('wz'),DK=[[]],cd=0,dr=null,al=[],ai=0,sn=mk('div','snp'),at=mk('div','atb');
+z.appendChild(sn);$('app').appendChild(at);
+function byZ(a,b){return b.e.style.zIndex-a.e.style.zIndex}
+/* --- Snap / split screen --- */
+function zone(x,y){var r=z.getBoundingClientRect(),m=22,l=x-r.left<m,rt=r.right-x<m,t=y-r.top<m;
+ return t&&l?'tl':t&&rt?'tr':l?'l':rt?'r':t?'mx':''}
+function box(k){var a=z.clientWidth,b=z.clientHeight,h=a/2,v=b/2;
+ return {l:[0,0,h,b],r:[h,0,h,b],tl:[0,0,h,v],tr:[h,0,h,v],mx:[0,0,a,b]}[k]}
+function snap(w,k,pre){
+ if(k==='mx'){if(!w.mx)tgl(w);return}
+ var b=box(k);if(!b)return;if(w.mx)tgl(w);
+ if(!w.sn)w.pre=pre||[w.e.offsetLeft,w.e.offsetTop,w.e.clientWidth,w.e.clientHeight];
+ w.sn=k;var s=w.e.style;s.left=b[0]+'px';s.top=b[1]+'px';s.width=b[2]+'px';s.height=b[3]+'px'}
+function unsnap(w){var p=w.pre,s=w.e.style;w.sn=0;if(!p)return;
+ s.left=p[0]+'px';s.top=p[1]+'px';s.width=p[2]+'px';s.height=p[3]+'px'}
+function wOf(el){return W.filter(function(x){return x.e===el})[0]}
+document.addEventListener('pointerdown',function(e){
+ var h=e.target.closest&&e.target.closest('.wh');dr=null;
+ if(h&&!e.target.closest('button')){var w=wOf(h.parentNode);if(w)dr={w:w,x:e.clientX,y:e.clientY,pre:[w.e.offsetLeft,w.e.offsetTop,w.e.clientWidth,w.e.clientHeight]}}},true);
+document.addEventListener('pointermove',function(e){
+ if(!dr||dr.w.mx)return;
+ if(dr.w.sn&&Math.hypot(e.clientX-dr.x,e.clientY-dr.y)>8)unsnap(dr.w);
+ var k=zone(e.clientX,e.clientY),b=k&&box(k);
+ if(b){var s=sn.style;s.display='block';s.left=b[0]+'px';s.top=b[1]+'px';s.width=b[2]+'px';s.height=b[3]+'px'}else sn.style.display='none'},true);
+function endDrag(e){
+ if(!dr)return;sn.style.display='none';
+ var k=e.
